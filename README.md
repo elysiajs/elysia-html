@@ -1,4 +1,4 @@
-# @kingworldjs/html
+# @elysiajs/html
 Plugin for [elysia](https://github.com/elysiajs/elysia) that add support for returning html.
 
 ## Installation
