@@ -1,4 +1,4 @@
-import KingWorld from 'kingworld'
+import { Elysia } from 'elysia'
 
 import html from '../src/index'
 
@@ -12,7 +12,7 @@ const page = `<!DOCTYPE HTML>
     </body>
 </html>`
 
-const app = new KingWorld()
+const app = new Elysia()
     .use(html)
     .get('/', () => page)
     .get('/html', ({ html }) => html(page))

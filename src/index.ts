@@ -1,6 +1,6 @@
-import KingWorld from 'kingworld'
+import { Elysia } from 'elysia'
 
-const html = (app: KingWorld) =>
+export const html = () => (app: Elysia) =>
     app
         .decorate(
             'html',

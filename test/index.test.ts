@@ -1,6 +1,5 @@
-import KingWorld from 'kingworld'
-
-import html from '../src'
+import { Elysia } from 'elysia'
+import { html } from '../src'
 
 import { describe, expect, it } from 'bun:test'
 
@@ -18,7 +17,7 @@ const page = `<!DOCTYPE HTML>
 
 describe('HTML', () => {
     it('auto return html', async () => {
-        const app = new KingWorld().use(html).get('/', () => page)
+        const app = new Elysia().use(html()).get('/', () => page)
 
         const res = await app.handle(req('/'))
         expect(await res.text()).toBe(page)
@@ -26,7 +25,7 @@ describe('HTML', () => {
     })
 
     it('manual return html', async () => {
-        const app = new KingWorld().use(html).get('/', ({ html }) => html(page))
+        const app = new Elysia().use(html()).get('/', ({ html }) => html(page))
 
         const res = await app.handle(req('/'))
         expect(await res.text()).toBe(page)
@@ -34,7 +33,7 @@ describe('HTML', () => {
     })
 
     it('auto return html in-sensitive', async () => {
-        const app = new KingWorld().use(html).get('/', () => `<!doCTypE HTML>`)
+        const app = new Elysia().use(html()).get('/', () => `<!doCTypE HTML>`)
 
         const res = await app.handle(req('/'))
         expect(res.headers.get('Content-Type')).toBe('text/html')
