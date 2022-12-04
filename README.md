@@ -1,5 +1,5 @@
 # @kingworldjs/html
-A plugin for [elysia](https://github.com/elysiajs/elysia) that add support for returning html.
+Plugin for [elysia](https://github.com/elysiajs/elysia) that add support for returning html.
 
 ## Installation
 ```bash
