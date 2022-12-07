@@ -1,19 +1,20 @@
 {
   "name": "@elysiajs/html",
-  "version": "0.1.0-rc.1",
+  "version": "0.1.0-rc.2",
   "description": "Plugin for Elysia that add support for returning html",
   "author": {
     "name": "saltyAom",
     "url": "https://github.com/SaltyAom",
     "email": "saltyaom@gmail.com"
   },
+  "main": "./dist/index.js",
   "exports": {
     "require": "./dist/cjs/index.js",
     "import": "./dist/index.js",
     "node": "./dist/index.js",
     "default": "./dist/index.js"
   },
-  "types": "./dist/index.d.ts",
+  "types": "./src/index.ts",
   "keywords": [
     "elysia",
     "html"
