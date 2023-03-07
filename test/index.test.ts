@@ -3,7 +3,7 @@ import { html } from '../src'
 
 import { describe, expect, it } from 'bun:test'
 
-const req = (path: string) => new Request(path)
+const req = (path: string) => new Request(`http://localhost${path}`)
 
 const page = `<!DOCTYPE HTML>
 <html lang="en">
