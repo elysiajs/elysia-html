@@ -38,4 +38,15 @@ describe('HTML', () => {
         const res = await app.handle(req('/'))
         expect(res.headers.get('Content-Type')).toBe('text/html')
     })
+
+    it('inherits header', async () => {
+        const app = new Elysia().use(html()).get('/', ({ html, set }) => {
+            set.headers.Server = 'Elysia'
+
+            return html
+        })
+
+        const res = await app.handle(req('/'))
+        expect(res.headers.get('Server')).toBe('Elysia')
+    })
 })
