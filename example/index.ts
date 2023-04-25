@@ -13,7 +13,7 @@ const page = `<!DOCTYPE HTML>
 </html>`
 
 const app = new Elysia()
-    .use(html)
+    .use(html())
     .get('/', () => page)
     .get('/html', ({ html }) => html(page))
     .listen(8080)
