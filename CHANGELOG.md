@@ -1,3 +1,7 @@
+# 0.5.0 - 15 May 2023
+- Add support for Elysia 0.5
+- Add CommonJS support
+
 # 0.1.1 - 25 Apr 2023
 Fix:
 - derive from context header
