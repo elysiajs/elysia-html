@@ -35,14 +35,14 @@
     "release": "npm run build && npm run test && npm publish --access public"
   },
   "peerDependencies": {
-    "elysia": ">= 0.5.12"
+    "elysia": ">= 0.6.10"
   },
   "devDependencies": {
-    "@types/node": "^20.1.4",
-    "bun-types": "^0.5.8",
-    "elysia": "0.5.12",
-    "eslint": "^8.40.0",
-    "rimraf": "4.3",
-    "typescript": "^5.0.4"
+    "@types/node": "^20.5.0",
+    "bun-types": "^0.7.3",
+    "elysia": "0.6.10",
+    "eslint": "^8.47.0",
+    "rimraf": "5.0.1",
+    "typescript": "^5.1.6"
   }
 }
