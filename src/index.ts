@@ -18,6 +18,8 @@ export const html = () => (app: Elysia) =>
           .startsWith('<!doctype')
       ) {
         return context.html(response)
+      } else if (typeof response === 'string') {
+        return new Response(response, context.set)
       } else {
         return response
       }
