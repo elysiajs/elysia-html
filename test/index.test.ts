@@ -94,7 +94,7 @@ describe('HTML', () => {
     it('inherits header plain response, json content, no html plugin', async () => {
         const app = new Elysia().get('/', ({ set }) => {
             set.headers.Server = 'Elysia'
-            return {hallo: "world"}
+            return { hallo: 'world' }
         })
 
         const res = await app.handle(req('/'))
