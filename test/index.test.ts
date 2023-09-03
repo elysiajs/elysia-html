@@ -42,11 +42,63 @@ describe('HTML', () => {
     it('inherits header', async () => {
         const app = new Elysia().use(html()).get('/', ({ html, set }) => {
             set.headers.Server = 'Elysia'
-
-            return html
+            return html(page)
         })
 
         const res = await app.handle(req('/'))
         expect(res.headers.get('Server')).toBe('Elysia')
+        expect(res.headers.get('Content-Type')).toBe('text/html')
+    })
+
+    it('inherits header plain response', async () => {
+        const app = new Elysia().use(html()).get('/', ({ html, set }) => {
+            set.headers.Server = 'Elysia'
+            return page
+        })
+
+        const res = await app.handle(req('/'))
+        expect(res.headers.get('Content-Type')).toBe('text/html')
+        expect(res.headers.get('Server')).toBe('Elysia')
+    })
+
+    it('inherits header plain response, no @elysia/html', async () => {
+        const app = new Elysia().get('/', ({ set }) => {
+            set.headers.Server = 'Elysia'
+            return page
+        })
+
+        const res = await app.handle(req('/'))
+        expect(res.headers.get('Server')).toBe('Elysia')
+    })
+
+    it('inherits header plain response, no html content', async () => {
+        const app = new Elysia().use(html()).get('/', ({ html, set }) => {
+            set.headers.Server = 'Elysia'
+            return 'Hello'
+        })
+
+        const res = await app.handle(req('/'))
+        expect(res.headers.get('Server')).toBe('Elysia')
+    })
+
+    it('inherits header plain response, no html content, no html plugin', async () => {
+        const app = new Elysia().get('/', ({ set }) => {
+            set.headers.Server = 'Elysia'
+            return 'Hello'
+        })
+
+        const res = await app.handle(req('/'))
+        expect(res.headers.get('Server')).toBe('Elysia')
+    })
+
+    it('inherits header plain response, json content, no html plugin', async () => {
+        const app = new Elysia().get('/', ({ set }) => {
+            set.headers.Server = 'Elysia'
+            return { hallo: 'world' }
+        })
+
+        const res = await app.handle(req('/'))
+        expect(res.headers.get('Server')).toBe('Elysia')
+        expect(res.headers.get('Content-Type')).toBe('application/json;charset=utf-8')
     })
 })
