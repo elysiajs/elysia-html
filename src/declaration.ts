@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 // @ts-ignore
 const { createElement } = require('typed-html')
 
@@ -480,7 +482,8 @@ declare namespace JSX {
         onunload?: string
     }
     interface HtmlTag {
-        [attributes: string]: string | boolean
+        // @ts-ignore
+        [attributes?: string]: string | boolean
         oncontextmenu?: string
         onkeydown?: string
         onkeypress?: string
