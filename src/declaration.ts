@@ -1,8 +1,10 @@
 // @ts-ignore
-const { createElement } = require('typed-html')
+const { compile, Fragment } = require('@kitajs/html')
 
 // @ts-ignore
-globalThis.ElysiaJSX = createElement
+globalThis.ElysiaJSX = compile
+// @ts-ignore
+globalThis.ElysiaJSX.Fragment = Fragment
 
 declare function ElysiaJSX(...params: any[]): string
 
@@ -13,7 +15,11 @@ declare namespace JSX {
     // @ts-ignore
     type BaseHTMLTag = Record<string, unknown>
 
+    // @ts-ignore
+    type BaseIntrinsicElements = Record<string, HtmlTag>
+
     interface HtmlTag extends BaseHTMLTag {
+        safe?: boolean
         accesskey?: string
         class?: string
         contenteditable?: string
@@ -29,6 +35,7 @@ declare namespace JSX {
         title?: string
         translate?: string | boolean
     }
+
     interface HtmlAnchorTag extends HtmlTag {
         href?: string
         target?: string
@@ -347,8 +354,7 @@ declare namespace JSX {
         height?: string
     }
 
-    interface IntrinsicElements {
-        [customElement: string]: HtmlTag
+    interface IntrinsicElements extends BaseIntrinsicElements {
         a: HtmlAnchorTag
         abbr: HtmlTag
         address: HtmlTag

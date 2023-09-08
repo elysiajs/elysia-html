@@ -1,6 +1,10 @@
 /// <reference path="./declaration.ts" />
 import { Elysia } from 'elysia'
-import sanitize from 'sanitize-html'
+import * as D from 'dompurify'
+
+const sanitize = D.sanitize
+
+const { compile } = require('@kitajs/html')
 
 import './declaration'
 

@@ -1,3 +1,9 @@
+# 0.6.3 - 8 Sep 2023
+Improvement:
+- Switch to Kita
+- Add support for Fragment
+- Remove unused library
+
 # 0.6.2 - 8 Sep 2023
 Improvement:
 - Add support for custom element

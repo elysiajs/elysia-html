@@ -27,4 +27,9 @@ const app = new Elysia()
     .get('/', () => page)
     .get('/jsx', () => jsx)
     .get('/html', ({ html }) => html(page))
+    .get('/a', () => {
+        <>
+            <h1>Hello World</h1>
+        </>
+    })
     .listen(8080)
