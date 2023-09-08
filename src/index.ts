@@ -1,35 +1,30 @@
+/// <reference path="./declaration.ts" />
 import { Elysia } from 'elysia'
+import sanitize from 'sanitize-html'
 
-export const html = () => (app: Elysia) =>
-    app
-        .derive((context) => ({
+import './declaration'
+
+const isHTMLRegex = /<[^>]*>/g
+const isHTML = isHTMLRegex.test.bind(isHTMLRegex)
+
+export const html = () =>
+    new Elysia({
+        name: '@elysiajs/html'
+    })
+        .derive(({ set }) => ({
+            sanitize,
             html(value: string) {
+                set.headers['content-type'] = 'text/html; charset=utf8'
 
-                //! error: expect(received).toBe(expected)
-                //! Expected: "text/html"
-                //! Received: "text/html, text/html"
-
-                // context.set.headers['content-type'] = 'text/html';
-                // return new Response(value, { headers: context.set.headers });
-
-                return new Response(value, {
-                    headers: {
-                        ...context.set.headers,
-                        'content-type': 'text/html'
-                    }
-                })
+                return new Response(value, set)
             }
         }))
-        .onAfterHandle((context, response) => {
-            if (
-                typeof response === 'string' &&
-                response
-                    .trimStart()
-                    .slice(0, 9)
-                    .toLowerCase()
-                    .startsWith('<!doctype')
-            )
-                return context.html(response)
+        .onAfterHandle(({ set }, response) => {
+            if (typeof response === 'string' && isHTML(response)) {
+                set.headers['content-type'] = 'text/html; charset=utf8'
+
+                return response
+            }
         })
 
 export default html

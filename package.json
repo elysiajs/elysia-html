@@ -1,6 +1,6 @@
 {
   "name": "@elysiajs/html",
-  "version": "0.5.2",
+  "version": "0.6.1",
   "description": "Plugin for Elysia that add support for returning html",
   "author": {
     "name": "saltyAom",
@@ -28,21 +28,29 @@
   "bugs": "https://github.com/elysiajs/elysia-html/issues",
   "license": "MIT",
   "scripts": {
-    "dev": "bun run --hot example/index.ts",
+    "dev": "bun run --watch example/index.tsx",
     "test": "bun wiptest && npm run test:node",
     "test:node": "npm install --prefix ./test/node/cjs/ && npm install --prefix ./test/node/esm/ && node ./test/node/cjs/index.js && node ./test/node/esm/index.js",
     "build": "rimraf dist && tsc --project tsconfig.esm.json && tsc --project tsconfig.cjs.json",
     "release": "npm run build && npm run test && npm publish --access public"
   },
   "peerDependencies": {
-    "elysia": ">= 0.5.12"
+    "elysia": ">= 0.6.0"
   },
   "devDependencies": {
-    "@types/node": "^20.1.4",
-    "bun-types": "^0.5.8",
-    "elysia": "0.5.12",
-    "eslint": "^8.40.0",
-    "rimraf": "4.3",
-    "typescript": "^5.0.4"
+    "@types/node": "^20.5.9",
+    "@types/react": "^18.2.21",
+    "bun-types": "^0.8.1",
+    "elysia": "0.6.19",
+    "eslint": "^8.48.0",
+    "hono": "^3.5.8",
+    "rimraf": "4.3.1",
+    "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "@types/sanitize-html": "^2.9.0",
+    "react": "^18.2.0",
+    "sanitize-html": "^2.11.0",
+    "typed-html": "^3.0.1"
   }
 }

@@ -1,3 +1,16 @@
+# 0.6.1 - 8 Sep 2023
+Improvement:
+- Add support for JSX
+- Match any html tag
+
+# 0.6.0 - 6 Aug 2023
+Improvement:
+- Add support for Elysia 0.6
+
+# 0.6.0-rc.0 - 6 Aug 2023
+Improvement:
+- Add support for Elysia 0.6
+
 # 0.5.0 - 15 May 2023
 - Add support for Elysia 0.5
 - Add CommonJS support

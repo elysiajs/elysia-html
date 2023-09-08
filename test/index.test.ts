@@ -21,7 +21,7 @@ describe('HTML', () => {
 
         const res = await app.handle(req('/'))
         expect(await res.text()).toBe(page)
-        expect(res.headers.get('Content-Type')).toBe('text/html')
+        expect(res.headers.get('Content-Type')).toContain('text/html')
     })
 
     it('manual return html', async () => {
@@ -29,14 +29,14 @@ describe('HTML', () => {
 
         const res = await app.handle(req('/'))
         expect(await res.text()).toBe(page)
-        expect(res.headers.get('Content-Type')).toBe('text/html')
+        expect(res.headers.get('Content-Type')).toContain('text/html')
     })
 
     it('auto return html in-sensitive', async () => {
         const app = new Elysia().use(html()).get('/', () => `<!doCTypE HTML>`)
 
         const res = await app.handle(req('/'))
-        expect(res.headers.get('Content-Type')).toBe('text/html')
+        expect(res.headers.get('Content-Type')).toContain('text/html')
     })
 
     it('inherits header', async () => {
@@ -48,5 +48,12 @@ describe('HTML', () => {
 
         const res = await app.handle(req('/'))
         expect(res.headers.get('Server')).toBe('Elysia')
+    })
+
+    it('return any html tag', async () => {
+        const app = new Elysia().use(html()).get('/', () => `<h1>Hello World</h1>`)
+
+        const res = await app.handle(req('/'))
+        expect(res.headers.get('Content-type')).toContain('text/html; charset=utf8')
     })
 })
