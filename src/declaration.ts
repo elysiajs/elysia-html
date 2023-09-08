@@ -343,6 +343,7 @@ declare namespace JSX {
     }
 
     interface IntrinsicElements {
+        [customElement: string]: HtmlTag
         a: HtmlAnchorTag
         abbr: HtmlTag
         address: HtmlTag
@@ -479,6 +480,7 @@ declare namespace JSX {
         onunload?: string
     }
     interface HtmlTag {
+        [attributes: string]: string | boolean
         oncontextmenu?: string
         onkeydown?: string
         onkeypress?: string

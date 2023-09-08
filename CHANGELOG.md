@@ -1,3 +1,8 @@
+# 0.6.2 - 8 Sep 2023
+Improvement:
+- Add support for custom element
+- Add support for custom attribute
+
 # 0.6.1 - 8 Sep 2023
 Improvement:
 - Add support for JSX
