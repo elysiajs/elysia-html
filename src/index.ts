@@ -14,16 +14,18 @@ export const html = () =>
         .derive(({ set }) => ({
             sanitize,
             html(value: string) {
-                set.headers['content-type'] = 'text/html; charset=utf8'
-
-                return new Response(value, set)
+                return new Response(value, {
+                    headers: {
+                        'content-type': 'text/html; charset=utf8'
+                    }
+                })
             }
         }))
         .onAfterHandle(({ set }, response) => {
             if (typeof response === 'string' && isHTML(response)) {
                 set.headers['content-type'] = 'text/html; charset=utf8'
 
-                return response
+                return new Response(response, set)
             }
         })
 

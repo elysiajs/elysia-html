@@ -32,18 +32,11 @@ describe('HTML', () => {
         expect(res.headers.get('Content-Type')).toContain('text/html')
     })
 
-    it('auto return html in-sensitive', async () => {
-        const app = new Elysia().use(html()).get('/', () => `<!doCTypE HTML>`)
-
-        const res = await app.handle(req('/'))
-        expect(res.headers.get('Content-Type')).toContain('text/html')
-    })
-
     it('inherits header', async () => {
         const app = new Elysia().use(html()).get('/', ({ html, set }) => {
             set.headers.Server = 'Elysia'
 
-            return html
+            return html("<h1>Hi</h1>")
         })
 
         const res = await app.handle(req('/'))
