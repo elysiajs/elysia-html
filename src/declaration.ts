@@ -1,5 +1,3 @@
-// @ts-nocheck
-
 // @ts-ignore
 const { createElement } = require('typed-html')
 
@@ -9,8 +7,13 @@ globalThis.ElysiaJSX = createElement
 declare function ElysiaJSX(...params: any[]): string
 
 declare namespace JSX {
-    // type Element = string;
-    interface HtmlTag {
+    // @ts-ignore
+    type Element = string;
+
+    // @ts-ignore
+    type BaseHTMLTag = Record<string, unknown>
+
+    interface HtmlTag extends BaseHTMLTag {
         accesskey?: string
         class?: string
         contenteditable?: string
@@ -482,8 +485,6 @@ declare namespace JSX {
         onunload?: string
     }
     interface HtmlTag {
-        // @ts-ignore
-        [attributes?: string]: string | boolean
         oncontextmenu?: string
         onkeydown?: string
         onkeypress?: string

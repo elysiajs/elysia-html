@@ -13,7 +13,7 @@ const page = `
 
 const jsx = (
     <html lang="en">
-        <head hx-a=''>
+        <head hx-a="A">
             <title>Hello World</title>
         </head>
         <body>
