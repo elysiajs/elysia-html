@@ -1,3 +1,7 @@
+# 0.6.4 - 8 Sep 2023
+Bug fix:
+- Fix createElement not rendering
+
 # 0.6.3 - 8 Sep 2023
 Improvement:
 - Switch to Kita

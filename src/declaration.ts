@@ -1,8 +1,8 @@
 // @ts-ignore
-const { compile, Fragment } = require('@kitajs/html')
+const { createElement, Fragment } = require('@kitajs/html')
 
 // @ts-ignore
-globalThis.ElysiaJSX = compile
+globalThis.ElysiaJSX = createElement
 // @ts-ignore
 globalThis.ElysiaJSX.Fragment = Fragment
 
