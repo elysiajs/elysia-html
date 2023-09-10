@@ -33,4 +33,6 @@ export const html = () =>
             }
         })
 
+export type { PropsWithChildren } from '@kitajs/html'
+
 export default html
