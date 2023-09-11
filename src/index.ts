@@ -24,8 +24,8 @@ export interface HtmlOptions {
 
   /**
    * The function used to detect if a string is a html or not. Default
-   * implementation checks if first non space character is `<` and last non
-   * space character is `>`.
+   * implementation checks if the strings starts with a doctype or a html tag.
+   * Implementation is case insensitive.
    *
    * @default isHtml
    */
@@ -69,10 +69,11 @@ export function html(options: HtmlOptions = {}) {
 const doctype = '<!doctype html>';
 
 /**
- * Checks if first non space character is `<` and last non
- * space character is `>`.
+ * Checks if the strings starts with a doctype or a html tag. Implementation is
+ * case insensitive.
  */
 export function isHtml(this: void, value: string) {
-  return value.trimStart().slice(0, doctype.length).toLowerCase() == doctype;
+  // Trims the start and limits the length to the doctype length.
+  value = value.trimStart().slice(0, doctype.length).toLowerCase();
+  return value == doctype || value.startsWith('<html>');
 }
-
