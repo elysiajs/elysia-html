@@ -4,8 +4,6 @@ import * as D from 'dompurify'
 
 const sanitize = D.sanitize
 
-const { compile } = require('@kitajs/html')
-
 import './declaration'
 
 const isHTMLRegex = /<[^>]*>/g
@@ -33,6 +31,23 @@ export const html = () =>
             }
         })
 
-export type { PropsWithChildren } from '@kitajs/html'
+export declare type Children =
+    | number
+    | string
+    | boolean
+    | null
+    | undefined
+    | Children[]
+
+export declare type PropsWithChildren<T = {}> = { children?: Children } & T
+
+export declare type Component<T = {}> = (
+    this: void,
+    props: PropsWithChildren<T>
+) => JSX.Element
+
+const { Fragment: F } = require('@kitajs/html')
+
+export const Fragment = F as Component
 
 export default html

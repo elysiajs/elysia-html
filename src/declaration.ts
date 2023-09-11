@@ -10,7 +10,7 @@ declare function ElysiaJSX(...params: any[]): string
 
 declare namespace JSX {
     // @ts-ignore
-    type Element = string;
+    type Element = string
 
     // @ts-ignore
     type BaseHTMLTag = Record<string, unknown>
