@@ -6,7 +6,7 @@ const sanitize = D.sanitize
 
 import './declaration'
 
-const isHTMLRegex = /<[^>]*>/g
+const isHTMLRegex = /<[^>]*>/
 const isHTML = isHTMLRegex.test.bind(isHTMLRegex)
 
 export const html = () =>
