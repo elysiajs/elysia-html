@@ -1,38 +1,78 @@
-/// <reference path="./declaration.ts" />
-import { Elysia } from 'elysia'
-import * as D from 'dompurify'
+import { Elysia } from 'elysia';
 
-const sanitize = D.sanitize
+export interface HtmlOptions {
+  /**
+   * The content-type of the response.
+   *
+   * @default 'text/html; charset=utf8'
+   */
+  contentType?: string;
 
-const { compile } = require('@kitajs/html')
+  /**
+   * Whether to automatically detect HTML content and set the content-type.
+   *
+   * @default true
+   */
+  autoDetect?: boolean;
 
-import './declaration'
+  /**
+   * Whether to automatically add `<!doctype html>` to the response, if not found.
+   *
+   * @default true
+   */
+  autoDoctype?: boolean;
 
-const isHTMLRegex = /<[^>]*>/g
-const isHTML = isHTMLRegex.test.bind(isHTMLRegex)
+  /**
+   * The function used to detect if a string is a html or not. Default
+   * implementation checks if first non space character is `<` and last non
+   * space character is `>`.
+   *
+   * @default isHtml
+   */
+  isHtml?: (this: void, value: string) => boolean;
+}
 
-export const html = () =>
-    new Elysia({
-        name: '@elysiajs/html'
-    })
-        .derive(({ set }) => ({
-            sanitize,
-            html(value: string) {
-                return new Response(value, {
-                    headers: {
-                        'content-type': 'text/html; charset=utf8'
-                    }
-                })
-            }
-        }))
-        .onAfterHandle(({ set }, response) => {
-            if (typeof response === 'string' && isHTML(response)) {
-                set.headers['content-type'] = 'text/html; charset=utf8'
+export function html(options: HtmlOptions = {}) {
+  // Defaults
+  options.contentType ??= 'text/html; charset=utf8';
+  options.autoDetect ??= true;
+  options.isHtml ??= isHtml;
+  options.autoDoctype ??= true;
 
-                return new Response(response, set)
-            }
-        })
+  let instance = new Elysia({ name: '@elysiajs/html' }).derive(() => ({
+    html(value: string) {
+      if (options.autoDoctype && !isHtml(value)) {
+        value = doctype + value;
+      }
 
-export type { PropsWithChildren } from '@kitajs/html'
+      return new Response(value, {
+        headers: { 'content-type': options.contentType! }
+      });
+    }
+  }));
 
-export default html
+  if (options.autoDetect) {
+    instance = instance.onAfterHandle(({ set }, response) => {
+      if (typeof response === 'string' && isHtml(response)) {
+        set.headers['content-type'] = options.contentType!;
+        return new Response(response, set);
+      }
+    });
+  }
+
+  return instance;
+}
+
+/**
+ * The lowercased doctype of HTML.
+ */
+const doctype = '<!doctype html>';
+
+/**
+ * Checks if first non space character is `<` and last non
+ * space character is `>`.
+ */
+export function isHtml(this: void, value: string) {
+  return value.trimStart().slice(0, doctype.length).toLowerCase() == doctype;
+}
+
