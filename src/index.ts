@@ -8,7 +8,7 @@ const { compile } = require('@kitajs/html')
 
 import './declaration'
 
-const isHTMLRegex = /<[^>]*>/g
+const isHTMLRegex = /<[^>]*>/
 const isHTML = isHTMLRegex.test.bind(isHTMLRegex)
 
 export const html = () =>
