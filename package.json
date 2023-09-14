@@ -47,6 +47,6 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@kitajs/html": "^2.0.1"
+    "@kitajs/html": "^2.2.1"
   }
 }
