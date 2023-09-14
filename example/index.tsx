@@ -1,8 +1,7 @@
 import { Elysia } from 'elysia'
-import { html } from '../src/index'
+import { html, Fragment } from '../src/index'
 
-const page = `
-<html lang="en">
+const page = `<html lang="en">
     <head>
         <title>Hello World</title>
     </head>
@@ -27,9 +26,9 @@ const app = new Elysia()
     .get('/', () => page)
     .get('/jsx', () => jsx)
     .get('/html', ({ html }) => html(page))
-    .get('/a', () => {
+    .get('/a', () => (
         <>
             <h1>Hello World</h1>
         </>
-    })
+    ))
     .listen(8080)

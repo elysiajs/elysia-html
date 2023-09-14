@@ -1,6 +1,6 @@
 {
   "name": "@elysiajs/html",
-  "version": "0.6.4",
+  "version": "0.6.5",
   "description": "Plugin for Elysia that add support for returning html",
   "author": {
     "name": "saltyAom",

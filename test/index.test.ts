@@ -49,4 +49,15 @@ describe('HTML', () => {
         const res = await app.handle(req('/'))
         expect(res.headers.get('Content-type')).toContain('text/html; charset=utf8')
     })
+
+    it('consistently identifies html content', async () => {
+        const app = new Elysia().use(html()).get('/', () => `<h1>Hi</h1>`)
+
+        let res = await app.handle(req('/'))
+        expect(res.headers.get('Content-type')).toContain('text/html; charset=utf8')
+        res = await app.handle(req('/'))
+        expect(res.headers.get('Content-type')).toContain('text/html; charset=utf8')
+        res = await app.handle(req('/'))
+        expect(res.headers.get('Content-type')).toContain('text/html; charset=utf8')
+    })
 })

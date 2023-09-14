@@ -1,6 +1,7 @@
-# 0.6.4 - 8 Sep 2023
-Bug fix:
-- Fix createElement not rendering
+# 0.6.5 - 11 Sep 2023
+Improvement:
+- Export `Children`, `PropsWithChildren`, `Component`, and `Fragment`
+- [#12](https://github.com/elysiajs/elysia-html/pull/12) Drop global flag
 
 # 0.6.3 - 8 Sep 2023
 Improvement:
