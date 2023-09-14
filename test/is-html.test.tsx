@@ -15,6 +15,7 @@ describe('isHtml', () => {
 
 		// Should trim() by default
 		expect(isHtml('   <h1>Hi</h1>    ')).toBe(true)
+		expect(isHtml(' \n   \n\n  <h1>Hi</h1> \n\n    \n   \n   ')).toBe(true)
 	})
 
 	it('detects html with JSX', () => {
