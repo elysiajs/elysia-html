@@ -1,34 +1,47 @@
-import { Elysia } from 'elysia'
-import { html, Fragment } from '../src/index'
+import { Elysia, t } from 'elysia'
+import { html } from '../src'
 
-const page = `<html lang="en">
-    <head>
-        <title>Hello World</title>
-    </head>
-    <body>
-        <h1>Hello World</h1>
-    </body>
-</html>`
+function page({ name }: { name: string }): string {
+	return `
+		<html lang="en">
+			<head>
+				<title>Hello ${name}!</title>
+			</head>
+			<body>
+				<h1>Hello ${name}!</h1>
+			</body>
+		</html>
+	`
+}
 
-const jsx = (
-    <html lang="en">
-        <head hx-a="A">
-            <title>Hello World</title>
-        </head>
-        <body>
-            <h1>Hello World</h1>
-        </body>
-    </html>
-)
+// https://elysiajs.com/plugins/html.html#jsx
+function tsxPage({ name }: { name: string }): string {
+	return (
+		<html lang="en">
+			<head>
+				<title>Hello ${name}!</title>
+			</head>
+			<body>
+				<h1>Hello ${name}!</h1>
+			</body>
+		</html>
+	)
+}
 
-const app = new Elysia()
-    .use(html())
-    .get('/', () => page)
-    .get('/jsx', () => jsx)
-    .get('/html', ({ html }) => html(page))
-    .get('/a', () => (
-        <>
-            <h1>Hello World</h1>
-        </>
-    ))
-    .listen(8080)
+export function createApp() {
+	// https://xelysiajs.com/concept/schema.html
+	const indexSchema = {
+		params: t.Object({
+			name: t.String({ default: 'World' })
+		})
+	}
+
+	return (
+		new Elysia()
+			// https://elysiajs.com/plugins/html.html#options
+			.use(html())
+			.get('/', ({ params }) => page(params), indexSchema)
+			.get('/tsx', ({ params }) => tsxPage(params), indexSchema)
+			.listen(8080)
+	)
+}
