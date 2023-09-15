@@ -32,7 +32,7 @@ export function html(options: HtmlOptions = {}) {
 			// use anonymous functions here.
 			function htmlHandle({ set }, response) {
 				if (!isHtml(response)) {
-					return
+					return response
 				}
 
 				// Full means that we should only try to convert raw string responses
