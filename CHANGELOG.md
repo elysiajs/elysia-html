@@ -1,3 +1,12 @@
+# 0.6.6 - 11 Sep 2023
+Improvement:
+- [#12](https://github.com/elysiajs/elysia-html/pull/12) update Kita to 2.2.1
+- add `autoDetect`, `autoDoctype`, `contentType` and `isHtml` by [@authurfiorette](https://github.com/arthurfiorette)
+
+
+Breaking Change:
+- Rename `ElysiaJSX`, `ElysiaJSX.Fragment` to `Html.createElement`, and `Html.Fragment`
+
 # 0.6.5 - 11 Sep 2023
 Improvement:
 - Export `Children`, `PropsWithChildren`, `Component`, and `Fragment`

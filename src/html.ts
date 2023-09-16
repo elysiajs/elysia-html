@@ -9,7 +9,7 @@ export function html(options: HtmlOptions = {}) {
 	options.isHtml ??= isHtml
 	options.autoDoctype ??= true
 
-	let instance = new Elysia({ name: '@elysiajs/html' }).derive(() => ({
+	let instance = new Elysia({ name: '@elysiajs/html' }).derive(({ set }) => ({
 		html(value: string) {
 			if (
 				options.autoDoctype &&
@@ -21,7 +21,9 @@ export function html(options: HtmlOptions = {}) {
 			}
 
 			return new Response(value, {
-				headers: { 'content-type': options.contentType! }
+				...set,
+				// @ts-expect-error
+				headers: { ...set.headers, 'content-type': options.contentType! },
 			})
 		}
 	}))

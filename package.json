@@ -36,10 +36,10 @@
     "format": "prettier --write ."
   },
   "peerDependencies": {
-    "elysia": ">= 0.6.23"
+    "@kitajs/html": ">= 2.2.0",
+    "elysia": ">= 0.6.11"
   },
   "devDependencies": {
-    "@types/dompurify": "^3.0.2",
     "@types/node": "^20.6.0",
     "bun-types": "^1.0.1",
     "elysia": "^0.6.23",
@@ -49,5 +49,10 @@
   },
   "dependencies": {
     "@kitajs/html": "^2.2.1"
+  },
+  "peerDependenciesMeta": {
+    "@kitajs/html": {
+      "optional": true
+    }
   }
 }
