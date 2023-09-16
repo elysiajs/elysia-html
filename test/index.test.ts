@@ -44,7 +44,7 @@ describe('HTML', () => {
     })
 
     it('return any html tag', async () => {
-        const app = new Elysia().use(html()).get('/', () => `<h1>Hello World</h1>`)
+        const app = new Elysia().use(html()).get('/', () => `<html>Hello World</html>`)
 
         const res = await app.handle(req('/'))
         expect(res.headers.get('Content-type')).toContain('text/html; charset=utf8')
