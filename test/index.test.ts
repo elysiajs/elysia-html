@@ -61,3 +61,43 @@ describe('HTML', () => {
         expect(res.headers.get('Content-type')).toContain('text/html; charset=utf8')
     })
 })
+
+describe('HTML vs No html - header', () => {
+    it('inherits header plain response when using the html plugin', async () => {
+        const app = new Elysia().use(html()).get('/', ({ html, set }) => {
+            set.headers.Server = 'Elysia'
+            return 'Hello'
+        })
+        const res = await app.handle(req('/'))
+        expect(res.headers.get('Server')).toBe('Elysia')
+    })
+
+    it('inherits header plain response not using the html plugin', async () => {
+        const app = new Elysia().get('/', ({ set }) => {
+            set.headers.Server = 'Elysia'
+            return 'Hello'
+        })
+        const res = await app.handle(req('/'))
+        expect(res.headers.get('Server')).toBe('Elysia')
+        expect(res.headers.get('Content-Type')).toBe(null)
+    })
+
+    it('inherits header json response when using the html plugin', async () => {
+        const app = new Elysia().use(html()).get('/', ({ html, set }) => {
+            set.headers.Server = 'Elysia'
+            return {'Hello': 1}
+        })
+        const res = await app.handle(req('/'))
+        expect(res.headers.get('Server')).toBe('Elysia')
+    })
+
+    it('inherits header json response not using the html plugin', async () => {
+        const app = new Elysia().get('/', ({ set }) => {
+            set.headers.Server = 'Elysia'
+            return {'Hello': 1}
+        })
+        const res = await app.handle(req('/'))
+        expect(res.headers.get('Server')).toBe('Elysia')
+        expect(res.headers.get('Content-Type')).toBe('application/json;charset=utf-8')
+    })
+})
