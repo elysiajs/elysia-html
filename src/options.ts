@@ -21,16 +21,16 @@ export interface HtmlOptions {
 	/**
 	 * Whether to automatically add `<!doctype html>` to a response starting with <html>, if not found.
 	 *
-   * Use `full` to also automatically add doctypes on responses returned without this plugin
-   * 
-   * ```ts
-   * // without the plugin
-   * app.get('/', () => '<html></html>')
-   * 
-   * // With the plugin
-   * app.get('/', ({ html }) => html('<html></html>')	
-   * ```
-   * 
+	 * Use `full` to also automatically add doctypes on responses returned without this plugin
+	 *
+	 * ```ts
+	 * // without the plugin
+	 * app.get('/', () => '<html></html>')
+	 *
+	 * // With the plugin
+	 * app.get('/', ({ html }) => html('<html></html>')
+	 * ```
+	 *
 	 * @default true
 	 */
 	autoDoctype?: boolean | 'full'
