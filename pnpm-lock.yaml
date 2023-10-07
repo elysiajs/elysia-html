@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@kitajs/html':
-    specifier: ^3.0.0
-    version: 3.0.0(@kitajs/ts-html-plugin@1.1.1)
+    specifier: ^3.0.2
+    version: 3.0.2(@kitajs/ts-html-plugin@1.2.0)
   '@kitajs/ts-html-plugin':
-    specifier: ^1.1.1
-    version: 1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2)
+    specifier: ^1.2.0
+    version: 1.2.0(@kitajs/html@3.0.2)(typescript@5.2.2)
 
 devDependencies:
   '@types/node':
@@ -24,7 +24,7 @@ devDependencies:
     version: 0.7.15(typescript@5.2.2)
   eslint:
     specifier: ^8.50.0
-    version: 8.50.0
+    version: 8.51.0
   rimraf:
     specifier: ^5.0.5
     version: 5.0.5
@@ -39,13 +39,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /@eslint-community/eslint-utils@4.4.0(eslint@8.50.0):
+  /@eslint-community/eslint-utils@4.4.0(eslint@8.51.0):
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
     dependencies:
-      eslint: 8.50.0
+      eslint: 8.51.0
       eslint-visitor-keys: 3.4.3
     dev: true
 
@@ -71,8 +71,8 @@ packages:
       - supports-color
     dev: true
 
-  /@eslint/js@8.50.0:
-    resolution: {integrity: sha512-NCC3zz2+nvYd+Ckfh87rA47zfu2QsQpvc6k1yzTk+b9KzRj0wkGa8LSoGOXN6Zv4lRf/EIoZ80biDh9HOI+RNQ==}
+  /@eslint/js@8.51.0:
+    resolution: {integrity: sha512-HxjQ8Qn+4SI3/AFv6sOrDB+g6PpUTDwSJiQqOrnneEk8L71161srI9gjzzZvYVbzHiVg/BvcH95+cK/zfIt4pg==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
@@ -108,24 +108,24 @@ packages:
       wrap-ansi-cjs: /wrap-ansi@7.0.0
     dev: true
 
-  /@kitajs/html@3.0.0(@kitajs/ts-html-plugin@1.1.1):
-    resolution: {integrity: sha512-8k9TH+9IBjq4XE/ct7Bv/jpKGuPqsTEbS8XFk4fQRNzQPRjJUm2sgQad9kIAZqh5UPA/QWw1pYMTI32UwKPRWg==}
+  /@kitajs/html@3.0.2(@kitajs/ts-html-plugin@1.2.0):
+    resolution: {integrity: sha512-KyIEUK9OKEviLO0YGBTIeGywb7L4qNyrOnn9AhZ6ARKiBVXlg7/dTup/G5fQOD0hSNT5au5ah3Ss7zma0QHbjw==}
     engines: {node: '>=12'}
     peerDependencies:
       '@kitajs/ts-html-plugin': '>=1.1'
     dependencies:
-      '@kitajs/ts-html-plugin': 1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2)
+      '@kitajs/ts-html-plugin': 1.2.0(@kitajs/html@3.0.2)(typescript@5.2.2)
       csstype: 3.1.2
     dev: false
 
-  /@kitajs/ts-html-plugin@1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-LV/6b23stMYoIg3lJBMgEhn10bvU75kdwTrE0pnLjfn64CJdvCNmpiDtnGWd9TIzoBaRAPCh5nPFxXJg6pm4Eg==}
+  /@kitajs/ts-html-plugin@1.2.0(@kitajs/html@3.0.2)(typescript@5.2.2):
+    resolution: {integrity: sha512-Bi+rcFRZ7eHrQIf38fShQ2/KzQ72si+w21FbkcJmPIyO4UXZQeN6F6EmwDW1UNUHOj9itP1XqvAnFEWT+qIT0w==}
     hasBin: true
     peerDependencies:
-      '@kitajs/html': '>=2'
+      '@kitajs/html': '>=3'
       typescript: '>=5'
     dependencies:
-      '@kitajs/html': 3.0.0(@kitajs/ts-html-plugin@1.1.1)
+      '@kitajs/html': 3.0.2(@kitajs/ts-html-plugin@1.2.0)
       chalk: 4.1.2
       tslib: 2.6.2
       typescript: 5.2.2
@@ -368,15 +368,15 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /eslint@8.50.0:
-    resolution: {integrity: sha512-FOnOGSuFuFLv/Sa+FDVRZl4GGVAAFFi8LecRsI5a1tMO5HIE8nCm4ivAlzt4dT3ol/PaaGC0rJEEXQmHJBGoOg==}
+  /eslint@8.51.0:
+    resolution: {integrity: sha512-2WuxRZBrlwnXi+/vFSJyjMqrNjtJqiasMzehF0shoLaW7DzS3/9Yvrmq5JiT66+pNjiX4UBnLDiKHcWAr/OInA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     hasBin: true
     dependencies:
-      '@eslint-community/eslint-utils': 4.4.0(eslint@8.50.0)
+      '@eslint-community/eslint-utils': 4.4.0(eslint@8.51.0)
       '@eslint-community/regexpp': 4.9.1
       '@eslint/eslintrc': 2.1.2
-      '@eslint/js': 8.50.0
+      '@eslint/js': 8.51.0
       '@humanwhocodes/config-array': 0.11.11
       '@humanwhocodes/module-importer': 1.0.1
       '@nodelib/fs.walk': 1.2.8
