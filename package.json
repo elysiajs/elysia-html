@@ -1,6 +1,6 @@
 {
   "name": "@elysiajs/html",
-  "version": "0.6.6",
+  "version": "0.7.1",
   "description": "Plugin for Elysia that add support for returning html",
   "author": {
     "name": "saltyAom",
@@ -12,7 +12,7 @@
     "bun": "./dist/index.js",
     "node": "./dist/cjs/index.js",
     "require": "./dist/cjs/index.js",
-    "import": "./dist/index.js",
+    "import": "./dist/index.js", 
     "default": "./dist/index.js"
   },
   "types": "./src/index.ts",
@@ -48,8 +48,8 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@kitajs/html": "^3.0.0",
-    "@kitajs/ts-html-plugin": "^1.1.1"
+    "@kitajs/html": "^3.0.2",
+    "@kitajs/ts-html-plugin": "^1.2.0"
   },
   "peerDependenciesMeta": {
     "@kitajs/html": {

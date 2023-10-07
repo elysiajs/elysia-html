@@ -1,3 +1,7 @@
+# 0.7.1 - 8 Oct 2023
+Improvement:
+- [#19](https://github.com/elysiajs/elysia-html/pull/20) Update to Kita HTML v3
+-
 # 0.6.6 - 11 Sep 2023
 Improvement:
 - [#12](https://github.com/elysiajs/elysia-html/pull/12) update Kita to 2.2.1

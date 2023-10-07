@@ -1,10 +1,5 @@
-// Adds @kitajs/html's Html globally.
-// @ts-expect-error - When running from a compiled bun version,
-// this will fail because /register will be stripped out if not
-// used. This is just a workaround to make it work.
-import { noop } from '@kitajs/html/register'
 try {
-	noop()
+	require('@kitajs/html/register')
 } catch {}
 
 export * from './html'
