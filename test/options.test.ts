@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'bun:test'
 import { Elysia } from 'elysia'
-import { html, isHtml, isTagHtml } from '../src'
+import { html } from '../src'
 
 function request(path: string) {
 	return new Request(`http://localhost${path}`)

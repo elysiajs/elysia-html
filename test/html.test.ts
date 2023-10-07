@@ -7,8 +7,7 @@ function request(path: string) {
 }
 
 function handler() {
-	return (
-		`
+	return `
 		<!DOCTYPE html>
 		<html lang="en">
 			<head>
@@ -19,7 +18,6 @@ function handler() {
 			</body>
 		</html>		
 		`
-	)
 }
 
 describe('Jsx html', () => {

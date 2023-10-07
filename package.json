@@ -36,22 +36,26 @@
     "format": "prettier --write ."
   },
   "peerDependencies": {
-    "@kitajs/html": ">= 2.2.0",
-    "elysia": ">= 0.6.11"
+    "@kitajs/html": ">= 3.0.0",
+    "elysia": ">= 0.7.15"
   },
   "devDependencies": {
-    "@types/node": "^20.6.0",
-    "bun-types": "^1.0.1",
-    "elysia": "^0.6.23",
-    "eslint": "^8.49.0",
-    "rimraf": "^5.0.1",
+    "@types/node": "^20.7.2",
+    "bun-types": "^1.0.3",
+    "elysia": "^0.7.15",
+    "eslint": "^8.50.0",
+    "rimraf": "^5.0.5",
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "@kitajs/html": "^2.2.1"
+    "@kitajs/html": "^3.0.0",
+    "@kitajs/ts-html-plugin": "^1.1.1"
   },
   "peerDependenciesMeta": {
     "@kitajs/html": {
+      "optional": true
+    },
+    "@kitajs/ts-html-plugin": {
       "optional": true
     }
   }

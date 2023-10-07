@@ -1,6 +1,9 @@
 import { Elysia } from 'elysia'
-import { isHtml, isTagHtml } from './utils'
+import { Readable } from 'stream'
+import { handleHtml } from './handler'
 import { HtmlOptions } from './options'
+import { isHtml } from './utils'
+import { renderToStream } from '@kitajs/html/suspense'
 
 export function html(options: HtmlOptions = {}) {
 	// Defaults
@@ -9,48 +12,44 @@ export function html(options: HtmlOptions = {}) {
 	options.isHtml ??= isHtml
 	options.autoDoctype ??= true
 
-	let instance = new Elysia({ name: '@elysiajs/html' }).derive(({ set }) => ({
-		html(value: string) {
-			if (
-				options.autoDoctype &&
-				isHtml(value) &&
-				// Avoids double adding !doctype or adding to non root html tags.
-				isTagHtml(value)
-			) {
-				value = '<!doctype html>' + value
-			}
+	let instance = new Elysia({ name: '@elysiajs/html' }).derive(({ set }) => {
+		return {
+			html<A = void>(
+				value:
+					| Readable
+					| JSX.Element
+					| ((this: void, rid: number, ...args: A[]) => JSX.Element),
+				...args: A[]
+			): Promise<Response | string> | Response | string {
+				if (typeof value === 'function') {
+					value = renderToStream((rid) =>
+						(value as Function)(rid, ...args)
+					)
+				}
 
-			return new Response(value, {
-				...set,
-				// @ts-expect-error
-				headers: { ...set.headers, 'content-type': options.contentType! },
-			})
+				return handleHtml(value, options, 'content-type' in set.headers)
+			}
 		}
-	}))
+	})
 
 	if (options.autoDetect) {
-		instance = instance.onAfterHandle(
-			// onAfterHandle should be present on a lot of stack traces, so we should not
-			// use anonymous functions here.
-			function htmlHandle({ set }, response) {
-				if (!isHtml(response)) {
-					return response
-				}
-
-				// Full means that we should only try to convert raw string responses
-				if (options.autoDoctype === 'full' && isTagHtml(response)) {
-					response = '<!doctype html>' + response
-				}
-
-				set.headers['content-type'] = options.contentType!
-
-				return new Response(
-					// @ts-expect-error - We know this is a string.
-					response,
-					set
-				)
+		// handlerPossibleHtml should be present on a lot of stack traces, so we should not
+		// use anonymous functions here.
+		instance = instance.onAfterHandle(function handlerPossibleHtml({
+			response: value,
+			set
+		}) {
+			if (
+				// Simple html string
+				isHtml(value) ||
+				// @kitajs/html stream
+				(value instanceof Readable && 'rid' in value)
+			) {
+				return handleHtml(value, options, 'content-type' in set.headers)
 			}
-		)
+
+			return value
+		})
 	}
 
 	return instance
