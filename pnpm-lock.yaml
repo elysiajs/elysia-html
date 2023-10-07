@@ -18,7 +18,7 @@ devDependencies:
     version: 20.7.2
   bun-types:
     specifier: ^1.0.3
-    version: 1.0.3
+    version: 1.0.4
   elysia:
     specifier: ^0.7.15
     version: 0.7.15(typescript@5.2.2)
@@ -228,8 +228,8 @@ packages:
       balanced-match: 1.0.2
     dev: true
 
-  /bun-types@1.0.3:
-    resolution: {integrity: sha512-XlyKVdYCHa7K5PHYGcwOVOrGE/bMnLS51y7zFA3ZAAXyiQ6dTaNXNCWTTufgII/6ruN770uhAXphQmzvU/r2fQ==}
+  /bun-types@1.0.4:
+    resolution: {integrity: sha512-MIXp8MXPqzjjDrBs2fNzODFgFB+Mkl/OdTsPjYaefRoBt+Bk8VEJc3S1bbs6pvBi/wCpPf/ZSmzfIyZ5w4gAMg==}
     dev: true
 
   /callsites@3.1.0:
