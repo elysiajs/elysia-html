@@ -3,7 +3,8 @@
 	"compilerOptions": {
 		"target": "ES2022",
 		"module": "CommonJS",
-		"outDir": "./dist/cjs"
+		"outDir": "./dist/cjs",
+		"noEmit": false
 	},
 	"include": ["src/**/*"]
 }
