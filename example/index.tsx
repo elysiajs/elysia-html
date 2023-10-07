@@ -51,7 +51,7 @@ function asyncPage(rid: number, { name }: { name: string }): JSX.Element {
 	)
 }
 
-// https://xelysiajs.com/concept/schema.html
+// https://elysiajs.com/concept/schema.html
 const indexSchema = {
 	query: t.Object({
 		name: t.String({ default: 'World' })

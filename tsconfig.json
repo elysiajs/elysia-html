@@ -6,6 +6,7 @@
 		"jsx": "react",
 		"jsxFactory": "Html.createElement",
 		"jsxFragmentFactory": "Html.Fragment",
+		"plugins": [{ "name": "@kitajs/ts-html-plugin" }],
 		"module": "ES2022",
 		"moduleResolution": "node",
 		"types": ["bun-types"],
