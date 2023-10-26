@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -6,16 +6,16 @@ settings:
 
 dependencies:
   '@kitajs/html':
-    specifier: ^3.0.0
-    version: 3.0.0(@kitajs/ts-html-plugin@1.1.1)
+    specifier: ^3.0.2
+    version: 3.0.4(@kitajs/ts-html-plugin@1.3.0)
   '@kitajs/ts-html-plugin':
-    specifier: ^1.1.1
-    version: 1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2)
+    specifier: ^1.2.0
+    version: 1.3.0(@kitajs/html@3.0.4)(typescript@5.2.2)
 
 devDependencies:
   '@types/node':
     specifier: ^20.7.2
-    version: 20.7.2
+    version: 20.8.9
   bun-types:
     specifier: ^1.0.3
     version: 1.0.3
@@ -108,24 +108,24 @@ packages:
       wrap-ansi-cjs: /wrap-ansi@7.0.0
     dev: true
 
-  /@kitajs/html@3.0.0(@kitajs/ts-html-plugin@1.1.1):
-    resolution: {integrity: sha512-8k9TH+9IBjq4XE/ct7Bv/jpKGuPqsTEbS8XFk4fQRNzQPRjJUm2sgQad9kIAZqh5UPA/QWw1pYMTI32UwKPRWg==}
+  /@kitajs/html@3.0.4(@kitajs/ts-html-plugin@1.3.0):
+    resolution: {integrity: sha512-sTZx+u+RukwXa9PcxXkrdo2EvD2hcjKF+0Pa4NwUz6Whqa02ziiT1lyo/lLbuRnzCpNC63uwINvoijUuY+SYPg==}
     engines: {node: '>=12'}
     peerDependencies:
-      '@kitajs/ts-html-plugin': '>=1.1'
+      '@kitajs/ts-html-plugin': '>=1.2.0'
     dependencies:
-      '@kitajs/ts-html-plugin': 1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2)
+      '@kitajs/ts-html-plugin': 1.3.0(@kitajs/html@3.0.4)(typescript@5.2.2)
       csstype: 3.1.2
     dev: false
 
-  /@kitajs/ts-html-plugin@1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-LV/6b23stMYoIg3lJBMgEhn10bvU75kdwTrE0pnLjfn64CJdvCNmpiDtnGWd9TIzoBaRAPCh5nPFxXJg6pm4Eg==}
+  /@kitajs/ts-html-plugin@1.3.0(@kitajs/html@3.0.4)(typescript@5.2.2):
+    resolution: {integrity: sha512-1zrx+bNtP6Sh/mDklnkGuGcPF2hjJpiR7pwWm7HormmMHYvk8zUFQnAA0XWqrVwWW9g/q+WGxqHRPxxEprbooA==}
     hasBin: true
     peerDependencies:
-      '@kitajs/html': '>=2'
+      '@kitajs/html': '>=3'
       typescript: '>=5'
     dependencies:
-      '@kitajs/html': 3.0.0(@kitajs/ts-html-plugin@1.1.1)
+      '@kitajs/html': 3.0.4(@kitajs/ts-html-plugin@1.3.0)
       chalk: 4.1.2
       tslib: 2.6.2
       typescript: 5.2.2
@@ -160,8 +160,10 @@ packages:
     dev: true
     optional: true
 
-  /@types/node@20.7.2:
-    resolution: {integrity: sha512-RcdC3hOBOauLP+r/kRt27NrByYtDjsXyAuSbR87O6xpsvi763WI+5fbSIvYJrXnt9w4RuxhV6eAXfIs7aaf/FQ==}
+  /@types/node@20.8.9:
+    resolution: {integrity: sha512-UzykFsT3FhHb1h7yD4CA4YhBHq545JC0YnEz41xkipN88eKQtL6rSgocL5tbAP6Ola9Izm/Aw4Ora8He4x0BHg==}
+    dependencies:
+      undici-types: 5.26.5
     dev: true
 
   /acorn-jsx@5.3.2(acorn@8.10.0):
@@ -905,6 +907,10 @@ packages:
     resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+    dev: true
 
   /uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
