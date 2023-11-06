@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -6,11 +6,11 @@ settings:
 
 dependencies:
   '@kitajs/html':
-    specifier: ^3.0.0
-    version: 3.0.0(@kitajs/ts-html-plugin@1.1.1)
+    specifier: ^3.0.2
+    version: 3.0.7(@kitajs/ts-html-plugin@1.3.0)
   '@kitajs/ts-html-plugin':
-    specifier: ^1.1.1
-    version: 1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2)
+    specifier: ^1.2.0
+    version: 1.3.0(@kitajs/html@3.0.7)(typescript@5.2.2)
 
 devDependencies:
   '@types/node':
@@ -24,7 +24,7 @@ devDependencies:
     version: 0.7.15(typescript@5.2.2)
   eslint:
     specifier: ^8.50.0
-    version: 8.50.0
+    version: 8.53.0
   rimraf:
     specifier: ^5.0.5
     version: 5.0.5
@@ -39,13 +39,13 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /@eslint-community/eslint-utils@4.4.0(eslint@8.50.0):
+  /@eslint-community/eslint-utils@4.4.0(eslint@8.53.0):
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
       eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
     dependencies:
-      eslint: 8.50.0
+      eslint: 8.53.0
       eslint-visitor-keys: 3.4.3
     dev: true
 
@@ -54,8 +54,8 @@ packages:
     engines: {node: ^12.0.0 || ^14.0.0 || >=16.0.0}
     dev: true
 
-  /@eslint/eslintrc@2.1.2:
-    resolution: {integrity: sha512-+wvgpDsrB1YqAMdEUCcnTlpfVBH7Vqn6A/NT3D8WVXFIaKMlErPIZT3oCIAVCOtarRpMtelZLqJeU3t7WY6X6g==}
+  /@eslint/eslintrc@2.1.3:
+    resolution: {integrity: sha512-yZzuIG+jnVu6hNSzFEN07e8BxF3uAzYtQb6uDkaYZLo6oYZDCq454c5kB8zxnzfCYyP4MIuyBn10L0DqwujTmA==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
       ajv: 6.12.6
@@ -71,16 +71,16 @@ packages:
       - supports-color
     dev: true
 
-  /@eslint/js@8.50.0:
-    resolution: {integrity: sha512-NCC3zz2+nvYd+Ckfh87rA47zfu2QsQpvc6k1yzTk+b9KzRj0wkGa8LSoGOXN6Zv4lRf/EIoZ80biDh9HOI+RNQ==}
+  /@eslint/js@8.53.0:
+    resolution: {integrity: sha512-Kn7K8dx/5U6+cT1yEhpX1w4PCSg0M+XyRILPgvwcEBjerFWCwQj5sbr3/VmxqV0JGHCBCzyd6LxypEuehypY1w==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /@humanwhocodes/config-array@0.11.11:
-    resolution: {integrity: sha512-N2brEuAadi0CcdeMXUkhbZB84eskAc8MEX1By6qEchoVywSgXPIjou4rYsl0V3Hj0ZnuGycGCjdNgockbzeWNA==}
+  /@humanwhocodes/config-array@0.11.13:
+    resolution: {integrity: sha512-JSBDMiDKSzQVngfRjOdFXgFfklaXI4K9nLF49Auh21lmBWRLIK3+xTErTWD4KU54pb6coM6ESE7Awz/FNU3zgQ==}
     engines: {node: '>=10.10.0'}
     dependencies:
-      '@humanwhocodes/object-schema': 1.2.1
+      '@humanwhocodes/object-schema': 2.0.1
       debug: 4.3.4
       minimatch: 3.1.2
     transitivePeerDependencies:
@@ -92,8 +92,8 @@ packages:
     engines: {node: '>=12.22'}
     dev: true
 
-  /@humanwhocodes/object-schema@1.2.1:
-    resolution: {integrity: sha512-ZnQMnLV4e7hDlUvw8H+U8ASL02SS2Gn6+9Ac3wGGLIe7+je2AeAOxPY+izIPJDfFDb7eDjev0Us8MO1iFRN8hA==}
+  /@humanwhocodes/object-schema@2.0.1:
+    resolution: {integrity: sha512-dvuCeX5fC9dXgJn9t+X5atfmgQAzUOWqS1254Gh0m6i8wKd10ebXkfNKiRK+1GWi/yTvvLDHpoxLr0xxxeslWw==}
     dev: true
 
   /@isaacs/cliui@8.0.2:
@@ -108,24 +108,24 @@ packages:
       wrap-ansi-cjs: /wrap-ansi@7.0.0
     dev: true
 
-  /@kitajs/html@3.0.0(@kitajs/ts-html-plugin@1.1.1):
-    resolution: {integrity: sha512-8k9TH+9IBjq4XE/ct7Bv/jpKGuPqsTEbS8XFk4fQRNzQPRjJUm2sgQad9kIAZqh5UPA/QWw1pYMTI32UwKPRWg==}
+  /@kitajs/html@3.0.7(@kitajs/ts-html-plugin@1.3.0):
+    resolution: {integrity: sha512-kUyesQMVlehigTFrNcHd4JU8H1KwuufGLHEQM0Kor6teyPCDDJOtTP04NoN8bK1y4px4ZGz9eUWBUpCnWrMs/Q==}
     engines: {node: '>=12'}
     peerDependencies:
-      '@kitajs/ts-html-plugin': '>=1.1'
+      '@kitajs/ts-html-plugin': '>=1.2.0'
     dependencies:
-      '@kitajs/ts-html-plugin': 1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2)
+      '@kitajs/ts-html-plugin': 1.3.0(@kitajs/html@3.0.7)(typescript@5.2.2)
       csstype: 3.1.2
     dev: false
 
-  /@kitajs/ts-html-plugin@1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-LV/6b23stMYoIg3lJBMgEhn10bvU75kdwTrE0pnLjfn64CJdvCNmpiDtnGWd9TIzoBaRAPCh5nPFxXJg6pm4Eg==}
+  /@kitajs/ts-html-plugin@1.3.0(@kitajs/html@3.0.7)(typescript@5.2.2):
+    resolution: {integrity: sha512-1zrx+bNtP6Sh/mDklnkGuGcPF2hjJpiR7pwWm7HormmMHYvk8zUFQnAA0XWqrVwWW9g/q+WGxqHRPxxEprbooA==}
     hasBin: true
     peerDependencies:
-      '@kitajs/html': '>=2'
+      '@kitajs/html': '>=3'
       typescript: '>=5'
     dependencies:
-      '@kitajs/html': 3.0.0(@kitajs/ts-html-plugin@1.1.1)
+      '@kitajs/html': 3.0.7(@kitajs/ts-html-plugin@1.3.0)
       chalk: 4.1.2
       tslib: 2.6.2
       typescript: 5.2.2
@@ -162,6 +162,10 @@ packages:
 
   /@types/node@20.7.2:
     resolution: {integrity: sha512-RcdC3hOBOauLP+r/kRt27NrByYtDjsXyAuSbR87O6xpsvi763WI+5fbSIvYJrXnt9w4RuxhV6eAXfIs7aaf/FQ==}
+    dev: true
+
+  /@ungap/structured-clone@1.2.0:
+    resolution: {integrity: sha512-zuVdFrMJiuCDQUMCzQaD6KL28MjnqqN8XnAqiEq9PNm/hCPTSGfrXCOfwj1ow4LFb/tNymJPwsNbVePc1xFqrQ==}
     dev: true
 
   /acorn-jsx@5.3.2(acorn@8.10.0):
@@ -368,18 +372,19 @@ packages:
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
 
-  /eslint@8.50.0:
-    resolution: {integrity: sha512-FOnOGSuFuFLv/Sa+FDVRZl4GGVAAFFi8LecRsI5a1tMO5HIE8nCm4ivAlzt4dT3ol/PaaGC0rJEEXQmHJBGoOg==}
+  /eslint@8.53.0:
+    resolution: {integrity: sha512-N4VuiPjXDUa4xVeV/GC/RV3hQW9Nw+Y463lkWaKKXKYMvmRiRDAtfpuPFLN+E1/6ZhyR8J2ig+eVREnYgUsiag==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     hasBin: true
     dependencies:
-      '@eslint-community/eslint-utils': 4.4.0(eslint@8.50.0)
+      '@eslint-community/eslint-utils': 4.4.0(eslint@8.53.0)
       '@eslint-community/regexpp': 4.9.1
-      '@eslint/eslintrc': 2.1.2
-      '@eslint/js': 8.50.0
-      '@humanwhocodes/config-array': 0.11.11
+      '@eslint/eslintrc': 2.1.3
+      '@eslint/js': 8.53.0
+      '@humanwhocodes/config-array': 0.11.13
       '@humanwhocodes/module-importer': 1.0.1
       '@nodelib/fs.walk': 1.2.8
+      '@ungap/structured-clone': 1.2.0
       ajv: 6.12.6
       chalk: 4.1.2
       cross-spawn: 7.0.3
