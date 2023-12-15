@@ -57,6 +57,8 @@ export function html(options: HtmlOptions = {}) {
 
 				if (response instanceof Response) return response
 
+				set.headers['content-type'] = options.contentType!
+
 				return new Response(response)
 			}
 

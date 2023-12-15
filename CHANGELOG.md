@@ -1,3 +1,8 @@
+
+# 0.8.0-rc.0 - 15 Dec 2023
+Change:
+- Add support for Elysia 0.8
+
 # 0.7.1 - 8 Oct 2023
 Improvement:
 - [#19](https://github.com/elysiajs/elysia-html/pull/20) Update to Kita HTML v3

@@ -5,9 +5,8 @@
  * @see https://stackoverflow.com/q/11229831
  */
 export function isHtml(this: void, value?: any): value is string {
-	if (typeof value !== 'string') {
+	if (typeof value !== 'string')
 		return false
-	}
 
 	value = value.trim()
 	const length = value.length

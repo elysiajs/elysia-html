@@ -58,12 +58,20 @@ const indexSchema = {
 	})
 }
 
-new Elysia()
+const app = new Elysia()
 	// https://elysiajs.com/plugins/html.html#options
-	.use(html())
-	.get('/', ({ query }) => page(query), indexSchema)
-	.get('/tsx', ({ query }) => <TsxPage name={query.name} />, indexSchema)
-	.get('/async', ({ query, stream }) => stream(<AsyncPage name={query.name} />, query), indexSchema)
+	.use(html({
+		autoDetect: true
+	}))
+	.get('/', ({ html }) => html('<h1>Hello World!</h1>')
+	)
+	// .get('/', ({ query }) => page(query), indexSchema)
+	// .get('/tsx', ({ query }) => <TsxPage name={query.name} />, indexSchema)
+	// .get('/async', ({ query, stream }) => stream(<AsyncPage name={query.name} />, query), indexSchema)
 	.listen(8080, () => console.log('Listening on http://localhost:8080'))
 
-	
+app.handle(new Request('http://localhost:8080/'))
+	.then((x) => x.text())
+	.then(console.log)
+
+console.log(app.routes[0]?.composed?.toString())

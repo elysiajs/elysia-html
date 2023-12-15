@@ -19,9 +19,8 @@ export function handleHtml(
 			isHtml(value) &&
 			// Avoids double adding !doctype or adding to non root html tags.
 			isTagHtml(value)
-		) {
+		)
 			value = '<!doctype html>' + value
-		}
 
 		return new Response(
 			value,
