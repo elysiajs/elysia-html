@@ -1,9 +1,10 @@
 import { Elysia } from 'elysia'
-import { Readable } from 'stream'
+import { Readable } from 'node:stream'
+import { renderToStream } from '@kitajs/html/suspense'
+
 import { handleHtml } from './handler'
 import { HtmlOptions } from './options'
 import { isHtml } from './utils'
-import { renderToStream } from '@kitajs/html/suspense'
 
 export function html(options: HtmlOptions = {}) {
 	// Defaults
@@ -12,7 +13,10 @@ export function html(options: HtmlOptions = {}) {
 	options.isHtml ??= isHtml
 	options.autoDoctype ??= true
 
-	let instance = new Elysia({ name: '@elysiajs/html' }).derive(({ set }) => {
+	const instance = new Elysia({
+		name: '@elysiajs/html',
+		seed: options
+	}).derive(({ set }) => {
 		return {
 			html(
 				value: Readable | JSX.Element
@@ -34,10 +38,8 @@ export function html(options: HtmlOptions = {}) {
 		}
 	})
 
-	if (options.autoDetect) {
-		// handlerPossibleHtml should be present on a lot of stack traces, so we should not
-		// use anonymous functions here.
-		instance = instance.onAfterHandle(function handlerPossibleHtml({
+	if (options.autoDetect)
+		return instance.mapResponse(async function handlerPossibleHtml({
 			response: value,
 			set
 		}) {
@@ -47,12 +49,19 @@ export function html(options: HtmlOptions = {}) {
 				// @kitajs/html stream
 				(value instanceof Readable && 'rid' in value)
 			) {
-				return handleHtml(value, options, 'content-type' in set.headers)
+				const response = await handleHtml(
+					value,
+					options,
+					'content-type' in set.headers
+				)
+
+				if (response instanceof Response) return response
+
+				return new Response(response)
 			}
 
-			return value
+			return undefined
 		})
-	}
 
 	return instance
 }
