@@ -16,7 +16,7 @@ function page({ name }: { name: string }): string {
 }
 
 // https://elysiajs.com/plugins/html.html#jsx
-function tsxPage({ name }: { name: string }): JSX.Element {
+function TsxPage({ name }: { name: string }): JSX.Element {
 	return (
 		<html lang="en" style={{ backgroundColor: 'black', color: 'white' }}>
 			<head>
@@ -35,7 +35,7 @@ async function FakeDatabase({ name }: { name: string }) {
 	return <h1>Hello {name}!</h1>
 }
 
-function asyncPage(rid: number, { name }: { name: string }): JSX.Element {
+function AsyncPage({ name, id }: { id: number; name: string }): JSX.Element {
 	return (
 		<html lang="en" style={{ backgroundColor: 'black', color: 'white' }}>
 			<head>
@@ -43,7 +43,7 @@ function asyncPage(rid: number, { name }: { name: string }): JSX.Element {
 			</head>
 			<body>
 				{/* https://github.com/kitajs/html#suspense-component */}
-				<Suspense rid={rid} fallback={<h1>Loading...</h1>}>
+				<Suspense rid={id} fallback={<h1>Loading...</h1>}>
 					<FakeDatabase name={name} />
 				</Suspense>
 			</body>
@@ -62,6 +62,8 @@ new Elysia()
 	// https://elysiajs.com/plugins/html.html#options
 	.use(html())
 	.get('/', ({ query }) => page(query), indexSchema)
-	.get('/tsx', ({ query }) => tsxPage(query), indexSchema)
-	.get('/async', ({ query, html }) => html(asyncPage, query), indexSchema)
+	.get('/tsx', ({ query }) => <TsxPage name={query.name} />, indexSchema)
+	.get('/async', ({ query, stream }) => stream(<AsyncPage name={query.name} />, query), indexSchema)
 	.listen(8080, () => console.log('Listening on http://localhost:8080'))
+
+	

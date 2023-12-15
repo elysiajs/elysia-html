@@ -1,62 +1,78 @@
 {
-  "name": "@elysiajs/html",
-  "version": "0.7.3",
-  "description": "Plugin for Elysia that add support for returning html",
-  "author": {
-    "name": "saltyAom",
-    "url": "https://github.com/SaltyAom",
-    "email": "saltyaom@gmail.com"
-  },
-  "main": "./dist/index.js",
-  "exports": {
-    "bun": "./dist/index.js",
-    "node": "./dist/cjs/index.js",
-    "require": "./dist/cjs/index.js",
-    "import": "./dist/index.js", 
-    "default": "./dist/index.js"
-  },
-  "types": "./src/index.ts",
-  "keywords": [
-    "elysia",
-    "html"
-  ],
-  "homepage": "https://github.com/elysiajs/elysia-html",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/elysiajs/elysia-html"
-  },
-  "bugs": "https://github.com/elysiajs/elysia-html/issues",
-  "license": "MIT",
-  "scripts": {
-    "dev": "bun run --watch example/index.tsx",
-    "test": "bun test && npm run test:node",
-    "test:node": "npm install --prefix ./test/node/cjs/ && npm install --prefix ./test/node/esm/ && node ./test/node/cjs/index.js && node ./test/node/esm/index.js",
-    "build": "rimraf dist && tsc --project tsconfig.esm.json && tsc --project tsconfig.cjs.json",
-    "release": "npm run build && npm run test && npm publish --access public",
-    "format": "prettier --write ."
-  },
-  "peerDependencies": {
-    "@kitajs/html": ">= 3.0.0",
-    "elysia": ">= 0.7.15"
-  },
-  "devDependencies": {
-    "@types/node": "^20.7.2",
-    "bun-types": "^1.0.3",
-    "elysia": "^0.7.15",
-    "eslint": "^8.50.0",
-    "rimraf": "^5.0.5",
-    "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "@kitajs/html": "^3.0.2",
-    "@kitajs/ts-html-plugin": "^1.2.0"
-  },
-  "peerDependenciesMeta": {
-    "@kitajs/html": {
-      "optional": true
+    "name": "@elysiajs/html",
+    "version": "0.8.0-rc.0",
+    "description": "Plugin for Elysia that add support for returning html",
+    "author": {
+        "name": "saltyAom",
+        "url": "https://github.com/SaltyAom",
+        "email": "saltyaom@gmail.com"
     },
-    "@kitajs/ts-html-plugin": {
-      "optional": true
+    "main": "./dist/index.js",
+    "exports": {
+        ".": {
+            "bun": "./dist/index.js",
+            "node": "./dist/cjs/index.js",
+            "require": "./dist/cjs/index.js",
+            "import": "./dist/index.js",
+            "default": "./dist/index.js"
+        },
+        "./htmx": {
+            "bun": "./dist/html.js",
+            "node": "./dist/cjs/htmx.js",
+            "require": "./dist/cjs/htmx.js",
+            "import": "./dist/htmx.js",
+            "default": "./dist/htmx.js"
+        },
+        "./hotwire": {
+            "bun": "./dist/hotwire.js",
+            "node": "./dist/cjs/hotwire.js",
+            "require": "./dist/cjs/hotwire.js",
+            "import": "./dist/hotwire.js",
+            "default": "./dist/hotwire.js"
+        }
+    },
+    "types": "./src/index.ts",
+    "keywords": [
+        "elysia",
+        "html"
+    ],
+    "homepage": "https://github.com/elysiajs/elysia-html",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/elysiajs/elysia-html"
+    },
+    "bugs": "https://github.com/elysiajs/elysia-html/issues",
+    "license": "MIT",
+    "scripts": {
+        "dev": "bun run --watch example/index.tsx",
+        "test": "bun test && npm run test:node",
+        "test:node": "npm install --prefix ./test/node/cjs/ && npm install --prefix ./test/node/esm/ && node ./test/node/cjs/index.js && node ./test/node/esm/index.js",
+        "build": "rimraf dist && tsc --project tsconfig.esm.json && tsc --project tsconfig.cjs.json",
+        "release": "npm run build && npm run test && npm publish --access public",
+        "format": "prettier --write ."
+    },
+    "peerDependencies": {
+        "elysia": ">= 0.8.0-rc.0"
+    },
+    "devDependencies": {
+        "@elysiajs/stream": "^0.7.2",
+        "@types/node": "^20.7.2",
+        "bun-types": "^1.0.3",
+        "elysia": "0.8.0-rc.0",
+        "eslint": "^8.50.0",
+        "rimraf": "^5.0.5",
+        "typescript": "^5.2.2"
+    },
+    "dependencies": {
+        "@kitajs/html": "^3.0.2",
+        "@kitajs/ts-html-plugin": "^1.2.0"
+    },
+    "peerDependenciesMeta": {
+        "@kitajs/html": {
+            "optional": true
+        },
+        "@kitajs/ts-html-plugin": {
+            "optional": true
+        }
     }
-  }
 }

@@ -14,20 +14,22 @@ export function html(options: HtmlOptions = {}) {
 
 	let instance = new Elysia({ name: '@elysiajs/html' }).derive(({ set }) => {
 		return {
-			html<A = void>(
-				value:
-					| Readable
-					| JSX.Element
-					| ((this: void, rid: number, ...args: A[]) => JSX.Element),
-				...args: A[]
+			html(
+				value: Readable | JSX.Element
 			): Promise<Response | string> | Response | string {
-				if (typeof value === 'function') {
-					value = renderToStream((rid) =>
-						(value as Function)(rid, ...args)
-					)
-				}
-
 				return handleHtml(value, options, 'content-type' in set.headers)
+			},
+			stream<A = any>(
+				value: (this: void, arg: A & { id: number }) => JSX.Element,
+				args: A
+			) {
+				return handleHtml(
+					renderToStream((id) =>
+						(value as Function)({ ...args, id })
+					),
+					options,
+					'content-type' in set.headers
+				)
 			}
 		}
 	})

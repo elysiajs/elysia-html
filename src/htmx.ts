@@ -1,0 +1,1 @@
+import '@kitajs/html/htmx'

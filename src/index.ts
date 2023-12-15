@@ -5,4 +5,7 @@ export * from './utils'
 // Adds @kitajs/html's Html globally.
 export * from '@kitajs/html/register'
 
+export { ErrorBoundary } from '@kitajs/html/error-boundary'
+export { Suspense } from '@kitajs/html/suspense'
+
 export { Html } from '@kitajs/html'
