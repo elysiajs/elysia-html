@@ -9,7 +9,6 @@
 		"plugins": [{ "name": "@kitajs/ts-html-plugin" }],
 		"module": "ES2022",
 		"moduleResolution": "node",
-		"types": ["bun-types"],
 		"declaration": true,
 		"outDir": "dist",
 		"noEmit": true,

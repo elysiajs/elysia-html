@@ -54,12 +54,12 @@ export function handleHtml(
 
 					controller.enqueue(str)
 				}
-			})
+			}) as any
 		)
 	}
 
 	return new Response(
-		stream,
+		stream as any,
 		hasContentType
 			? undefined
 			: { headers: { 'content-type': options.contentType! } }

@@ -16,7 +16,7 @@ export function html(options: HtmlOptions = {}) {
 	const instance = new Elysia({
 		name: '@elysiajs/html',
 		seed: options
-	}).derive(({ set }) => {
+	}).derive({ as: 'global' }, ({ set }) => {
 		return {
 			html(
 				value: Readable | JSX.Element
@@ -39,31 +39,31 @@ export function html(options: HtmlOptions = {}) {
 	})
 
 	if (options.autoDetect)
-		return instance.mapResponse(async function handlerPossibleHtml({
-			response: value,
-			set
-		}) {
-			if (
-				// Simple html string
-				isHtml(value) ||
-				// @kitajs/html stream
-				(value instanceof Readable && 'rid' in value)
-			) {
-				const response = await handleHtml(
-					value,
-					options,
-					'content-type' in set.headers
-				)
+		return instance.mapResponse(
+			{ as: 'global' },
+			async function handlerPossibleHtml({ response: value, set }) {
+				if (
+					// Simple html string
+					isHtml(value) ||
+					// @kitajs/html stream
+					(value instanceof Readable && 'rid' in value)
+				) {
+					const response = await handleHtml(
+						value,
+						options,
+						'content-type' in set.headers
+					)
 
-				if (response instanceof Response) return response
+					if (response instanceof Response) return response
 
-				set.headers['content-type'] = options.contentType!
+					set.headers['content-type'] = options.contentType!
 
-				return new Response(response)
+					return new Response(response)
+				}
+
+				return undefined
 			}
-
-			return undefined
-		})
+		)
 
 	return instance
 }
