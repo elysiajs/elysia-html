@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -6,22 +6,25 @@ settings:
 
 dependencies:
   '@kitajs/html':
-    specifier: ^3.0.0
-    version: 3.0.0(@kitajs/ts-html-plugin@1.1.1)
+    specifier: ^3.0.2
+    version: 3.0.10(@kitajs/ts-html-plugin@1.3.3)
   '@kitajs/ts-html-plugin':
-    specifier: ^1.1.1
-    version: 1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2)
+    specifier: ^1.2.0
+    version: 1.3.3(@kitajs/html@3.0.10)(typescript@5.2.2)
 
 devDependencies:
+  '@elysiajs/stream':
+    specifier: ^0.7.2
+    version: 0.7.2(elysia@0.8.0)
   '@types/node':
     specifier: ^20.7.2
     version: 20.7.2
   bun-types:
     specifier: ^1.0.3
-    version: 1.0.3
+    version: 1.0.21
   elysia:
-    specifier: ^0.7.15
-    version: 0.7.15(typescript@5.2.2)
+    specifier: 0.8.0
+    version: 0.8.0(typescript@5.2.2)
   eslint:
     specifier: ^8.50.0
     version: 8.50.0
@@ -37,6 +40,15 @@ packages:
   /@aashutoshrathi/word-wrap@1.2.6:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /@elysiajs/stream@0.7.2(elysia@0.8.0):
+    resolution: {integrity: sha512-mHdpGKVpDvJt161+Da1JUUkMtMZ9sL/l2768Bu1EgUAVBLapgK6KVj3T110vVRy7sMR6OXz66eooTY2yqLILlw==}
+    peerDependencies:
+      elysia: '>= 0.7.20'
+    dependencies:
+      elysia: 0.8.0(typescript@5.2.2)
+      nanoid: 5.0.4
     dev: true
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.50.0):
@@ -108,24 +120,24 @@ packages:
       wrap-ansi-cjs: /wrap-ansi@7.0.0
     dev: true
 
-  /@kitajs/html@3.0.0(@kitajs/ts-html-plugin@1.1.1):
-    resolution: {integrity: sha512-8k9TH+9IBjq4XE/ct7Bv/jpKGuPqsTEbS8XFk4fQRNzQPRjJUm2sgQad9kIAZqh5UPA/QWw1pYMTI32UwKPRWg==}
+  /@kitajs/html@3.0.10(@kitajs/ts-html-plugin@1.3.3):
+    resolution: {integrity: sha512-3SblgDWCJOVrXFTf5dciXF3sj96CazDfHteuXHX8OHibjdYAmyLj3j0+s3y6B0ppcICR4x0i90CkkOvk2q+M7Q==}
     engines: {node: '>=12'}
     peerDependencies:
-      '@kitajs/ts-html-plugin': '>=1.1'
+      '@kitajs/ts-html-plugin': '>=1.2.0'
     dependencies:
-      '@kitajs/ts-html-plugin': 1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2)
+      '@kitajs/ts-html-plugin': 1.3.3(@kitajs/html@3.0.10)(typescript@5.2.2)
       csstype: 3.1.2
     dev: false
 
-  /@kitajs/ts-html-plugin@1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-LV/6b23stMYoIg3lJBMgEhn10bvU75kdwTrE0pnLjfn64CJdvCNmpiDtnGWd9TIzoBaRAPCh5nPFxXJg6pm4Eg==}
+  /@kitajs/ts-html-plugin@1.3.3(@kitajs/html@3.0.10)(typescript@5.2.2):
+    resolution: {integrity: sha512-qam/xc4zgP9e/CeSlBcpmJ5BOf9jCUr7qee6KcxzuFXN8fFf8IeNph46ukrQCXk0tEiItd48BnkkL0jEAozdeg==}
     hasBin: true
     peerDependencies:
-      '@kitajs/html': '>=2'
-      typescript: '>=5'
+      '@kitajs/html': ^3.0.10
+      typescript: ^5.2.2
     dependencies:
-      '@kitajs/html': 3.0.0(@kitajs/ts-html-plugin@1.1.1)
+      '@kitajs/html': 3.0.10(@kitajs/ts-html-plugin@1.3.3)
       chalk: 4.1.2
       tslib: 2.6.2
       typescript: 5.2.2
@@ -162,6 +174,12 @@ packages:
 
   /@types/node@20.7.2:
     resolution: {integrity: sha512-RcdC3hOBOauLP+r/kRt27NrByYtDjsXyAuSbR87O6xpsvi763WI+5fbSIvYJrXnt9w4RuxhV6eAXfIs7aaf/FQ==}
+    dev: true
+
+  /@types/ws@8.5.10:
+    resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
+    dependencies:
+      '@types/node': 20.7.2
     dev: true
 
   /acorn-jsx@5.3.2(acorn@8.10.0):
@@ -228,8 +246,12 @@ packages:
       balanced-match: 1.0.2
     dev: true
 
-  /bun-types@1.0.3:
-    resolution: {integrity: sha512-XlyKVdYCHa7K5PHYGcwOVOrGE/bMnLS51y7zFA3ZAAXyiQ6dTaNXNCWTTufgII/6ruN770uhAXphQmzvU/r2fQ==}
+  /bun-types@1.0.21:
+    resolution: {integrity: sha512-Ugagjf+XZUXDvxDRa3EnhLeMzm2g8ZYFleBF55Ac3GZSzPqdMLAdK9kvZB6M1H4nAFvrEHdV2PHqkzIoNs+3wQ==}
+    dependencies:
+      '@types/node': 20.7.2
+      '@types/ws': 8.5.10
+      undici-types: 5.28.2
     dev: true
 
   /callsites@3.1.0:
@@ -266,13 +288,8 @@ packages:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
 
-  /cookie-signature@1.2.1:
-    resolution: {integrity: sha512-78KWk9T26NhzXtuL26cIJ8/qNHANyJ/ZYrmEXFzUmhZdjpBv+DlWlOANRTGBt48YcyslsLrj0bMLFTmXvLRCOw==}
-    engines: {node: '>=6.6.0'}
-    dev: true
-
-  /cookie@0.5.0:
-    resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
+  /cookie@0.6.0:
+    resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
     dev: true
 
@@ -316,8 +333,8 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /elysia@0.7.15(typescript@5.2.2):
-    resolution: {integrity: sha512-b1gVxVMb7tlwMFM7NRSCEpYCmtGGeHSzkU4HmocmZmieLYxCEQ2og5kamv38gwvY8Ju41aysv3aKijmPsu5xew==}
+  /elysia@0.8.0(typescript@5.2.2):
+    resolution: {integrity: sha512-adEWjxBFaiFCqDuZEWN28TyvOcRxgguAYaBtwagolF+8XdGqG49ox3HRPZNFr+HURpgfo8rOKjS+Okw1AhyZUw==}
     peerDependencies:
       '@sinclair/typebox': '>= 0.31.0'
       openapi-types: '>= 12.0.0'
@@ -330,9 +347,9 @@ packages:
       typescript:
         optional: true
     dependencies:
-      cookie: 0.5.0
-      cookie-signature: 1.2.1
+      cookie: 0.6.0
       eventemitter3: 5.0.1
+      fast-decode-uri-component: 1.0.1
       fast-querystring: 1.1.2
       memoirist: 0.1.4
       typescript: 5.2.2
@@ -707,6 +724,12 @@ packages:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
     dev: true
 
+  /nanoid@5.0.4:
+    resolution: {integrity: sha512-vAjmBf13gsmhXSgBrtIclinISzFFy22WwCYoyilZlsrRXNIHSwgFQ1bEdjRwMT3aoadeIF6HMuDRlOxzfXV8ig==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
+    dev: true
+
   /natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
     dev: true
@@ -905,6 +928,10 @@ packages:
     resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  /undici-types@5.28.2:
+    resolution: {integrity: sha512-W71OLwDqzIO0d3k07qg1xc7d4cX8SsSwuCO4bQ4V7ITwduXXie/lcImofabP5VV+NvuvSe8ovKvHVJcizVc1JA==}
+    dev: true
 
   /uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
