@@ -69,6 +69,16 @@ describe('HTML', () => {
 			'text/html; charset=utf8'
 		)
 	})
+
+	it('returns user provided status code', async () => {
+		const app = new Elysia().use(html()).get('/', ({ html, set }) => {
+			set.status = 404
+			return html('<h1>Not Found</h1>')
+		})
+
+		const res = await app.handle(req('/'))
+		expect(res.status).toBe(404)
+	})
 })
 
 describe('HTML vs No html - header', () => {

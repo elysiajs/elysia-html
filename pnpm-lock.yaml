@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -6,22 +6,25 @@ settings:
 
 dependencies:
   '@kitajs/html':
-    specifier: ^3.0.0
-    version: 3.0.0(@kitajs/ts-html-plugin@1.1.1)
+    specifier: ^3.0.2
+    version: 3.1.2(@kitajs/ts-html-plugin@1.3.4)
   '@kitajs/ts-html-plugin':
-    specifier: ^1.1.1
-    version: 1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2)
+    specifier: ^1.2.0
+    version: 1.3.4(@kitajs/html@3.1.2)(typescript@5.2.2)
 
 devDependencies:
+  '@elysiajs/stream':
+    specifier: ^0.7.2
+    version: 0.7.2(elysia@1.0.6)
+  '@types/bun':
+    specifier: ^1.0.4
+    version: 1.0.11
   '@types/node':
     specifier: ^20.7.2
     version: 20.7.2
-  bun-types:
-    specifier: ^1.0.3
-    version: 1.0.3
   elysia:
-    specifier: ^0.7.15
-    version: 0.7.15(typescript@5.2.2)
+    specifier: 1.0.6
+    version: 1.0.6(@sinclair/typebox@0.32.20)(typescript@5.2.2)
   eslint:
     specifier: ^8.50.0
     version: 8.50.0
@@ -37,6 +40,15 @@ packages:
   /@aashutoshrathi/word-wrap@1.2.6:
     resolution: {integrity: sha512-1Yjs2SvM8TflER/OD3cOjhWWOZb58A2t7wpE2S9XfBYTiIl+XFhQG2bjy4Pu1I+EAlCNUzRDYDdFwFYUKvXcIA==}
     engines: {node: '>=0.10.0'}
+    dev: true
+
+  /@elysiajs/stream@0.7.2(elysia@1.0.6):
+    resolution: {integrity: sha512-mHdpGKVpDvJt161+Da1JUUkMtMZ9sL/l2768Bu1EgUAVBLapgK6KVj3T110vVRy7sMR6OXz66eooTY2yqLILlw==}
+    peerDependencies:
+      elysia: '>= 0.7.20'
+    dependencies:
+      elysia: 1.0.6(@sinclair/typebox@0.32.20)(typescript@5.2.2)
+      nanoid: 5.0.6
     dev: true
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.50.0):
@@ -108,24 +120,24 @@ packages:
       wrap-ansi-cjs: /wrap-ansi@7.0.0
     dev: true
 
-  /@kitajs/html@3.0.0(@kitajs/ts-html-plugin@1.1.1):
-    resolution: {integrity: sha512-8k9TH+9IBjq4XE/ct7Bv/jpKGuPqsTEbS8XFk4fQRNzQPRjJUm2sgQad9kIAZqh5UPA/QWw1pYMTI32UwKPRWg==}
+  /@kitajs/html@3.1.2(@kitajs/ts-html-plugin@1.3.4):
+    resolution: {integrity: sha512-igMLn8VCrAyjFuK1OOsCkiiu95EQ+hK/C96moz9+MzX3lsMukZO/AqXRxdhTeB80AtE61pL+lUTuwTkqz/s+rQ==}
     engines: {node: '>=12'}
     peerDependencies:
-      '@kitajs/ts-html-plugin': '>=1.1'
+      '@kitajs/ts-html-plugin': '>=1.3.3'
     dependencies:
-      '@kitajs/ts-html-plugin': 1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2)
-      csstype: 3.1.2
+      '@kitajs/ts-html-plugin': 1.3.4(@kitajs/html@3.1.2)(typescript@5.2.2)
+      csstype: 3.1.3
     dev: false
 
-  /@kitajs/ts-html-plugin@1.1.1(@kitajs/html@3.0.0)(typescript@5.2.2):
-    resolution: {integrity: sha512-LV/6b23stMYoIg3lJBMgEhn10bvU75kdwTrE0pnLjfn64CJdvCNmpiDtnGWd9TIzoBaRAPCh5nPFxXJg6pm4Eg==}
+  /@kitajs/ts-html-plugin@1.3.4(@kitajs/html@3.1.2)(typescript@5.2.2):
+    resolution: {integrity: sha512-AAht1OvLkQizJ59DM70qBgb0VwdyW9KUtDaH66JrfanMMvSSoM598WspJrVdVbe50olw69H+nnTj0lEfNDVmPQ==}
     hasBin: true
     peerDependencies:
-      '@kitajs/html': '>=2'
-      typescript: '>=5'
+      '@kitajs/html': ^3.1.1
+      typescript: ^5.2.2
     dependencies:
-      '@kitajs/html': 3.0.0(@kitajs/ts-html-plugin@1.1.1)
+      '@kitajs/html': 3.1.2(@kitajs/ts-html-plugin@1.3.4)
       chalk: 4.1.2
       tslib: 2.6.2
       typescript: 5.2.2
@@ -160,8 +172,30 @@ packages:
     dev: true
     optional: true
 
+  /@sinclair/typebox@0.32.20:
+    resolution: {integrity: sha512-ziK497ILSIYMxD/thl496idIb03IZPlha04itLQu1xAFQbumWZ+Dj4PMMCkDRpAYhvVSdmRlTjGu2B2MA5RplQ==}
+    dev: true
+
+  /@types/bun@1.0.11:
+    resolution: {integrity: sha512-kU4yU7vs/J/yIBoocc9j0sR/CxQ/WD4hSx3rl+WA2nLjcYuGR5aHJXVIBRcT5zvMmTt4CnSVkiONiWPob5trFg==}
+    dependencies:
+      bun-types: 1.0.35
+    dev: true
+
+  /@types/node@20.11.30:
+    resolution: {integrity: sha512-dHM6ZxwlmuZaRmUPfv1p+KrdD1Dci04FbdEm/9wEMouFqxYoFl5aMkt0VMAUtYRQDyYvD41WJLukhq/ha3YuTw==}
+    dependencies:
+      undici-types: 5.26.5
+    dev: true
+
   /@types/node@20.7.2:
     resolution: {integrity: sha512-RcdC3hOBOauLP+r/kRt27NrByYtDjsXyAuSbR87O6xpsvi763WI+5fbSIvYJrXnt9w4RuxhV6eAXfIs7aaf/FQ==}
+    dev: true
+
+  /@types/ws@8.5.10:
+    resolution: {integrity: sha512-vmQSUcfalpIq0R9q7uTo2lXs6eGIpt9wtnLdMv9LVpIjCA/+ufZRozlVoVelIYixx1ugCBKDhn89vnsEGOCx9A==}
+    dependencies:
+      '@types/node': 20.11.30
     dev: true
 
   /acorn-jsx@5.3.2(acorn@8.10.0):
@@ -228,8 +262,11 @@ packages:
       balanced-match: 1.0.2
     dev: true
 
-  /bun-types@1.0.3:
-    resolution: {integrity: sha512-XlyKVdYCHa7K5PHYGcwOVOrGE/bMnLS51y7zFA3ZAAXyiQ6dTaNXNCWTTufgII/6ruN770uhAXphQmzvU/r2fQ==}
+  /bun-types@1.0.35:
+    resolution: {integrity: sha512-JlFllUCVMZbDyGfbv9dBWXd2tRdZSzyP1EWDKcTTVRViYNYX8AEsfpMN/vu6Hk8CBhKrhbbBkKZcNjJev8QQHQ==}
+    dependencies:
+      '@types/node': 20.11.30
+      '@types/ws': 8.5.10
     dev: true
 
   /callsites@3.1.0:
@@ -266,13 +303,8 @@ packages:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
     dev: true
 
-  /cookie-signature@1.2.1:
-    resolution: {integrity: sha512-78KWk9T26NhzXtuL26cIJ8/qNHANyJ/ZYrmEXFzUmhZdjpBv+DlWlOANRTGBt48YcyslsLrj0bMLFTmXvLRCOw==}
-    engines: {node: '>=6.6.0'}
-    dev: true
-
-  /cookie@0.5.0:
-    resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
+  /cookie@0.6.0:
+    resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
     dev: true
 
@@ -285,8 +317,8 @@ packages:
       which: 2.0.2
     dev: true
 
-  /csstype@3.1.2:
-    resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==}
+  /csstype@3.1.3:
+    resolution: {integrity: sha512-M1uQkMl8rQK/szD0LNhtqxIPLpimGm8sOBwU7lLnCpSbTyY3yeU1Vc7l4KT5zT4s/yOxHH5O7tIuuLOCnLADRw==}
     dev: false
 
   /debug@4.3.4:
@@ -316,25 +348,23 @@ packages:
     resolution: {integrity: sha512-I88TYZWc9XiYHRQ4/3c5rjjfgkjhLyW2luGIheGERbNQ6OY7yTybanSpDXZa8y7VUP9YmDcYa+eyq4ca7iLqWA==}
     dev: true
 
-  /elysia@0.7.15(typescript@5.2.2):
-    resolution: {integrity: sha512-b1gVxVMb7tlwMFM7NRSCEpYCmtGGeHSzkU4HmocmZmieLYxCEQ2og5kamv38gwvY8Ju41aysv3aKijmPsu5xew==}
+  /elysia@1.0.6(@sinclair/typebox@0.32.20)(typescript@5.2.2):
+    resolution: {integrity: sha512-vr+ARNglPJ4Q2TNGSvAT1WEfxkPgfdXMfbkUacijxKz7eYvWnqA3ir751Pe24o31mJszl1HNhjQA56axorlyug==}
     peerDependencies:
       '@sinclair/typebox': '>= 0.31.0'
       openapi-types: '>= 12.0.0'
       typescript: '>= 5.0.0'
     peerDependenciesMeta:
-      '@sinclair/typebox':
-        optional: true
       openapi-types:
         optional: true
       typescript:
         optional: true
     dependencies:
-      cookie: 0.5.0
-      cookie-signature: 1.2.1
+      '@sinclair/typebox': 0.32.20
+      cookie: 0.6.0
       eventemitter3: 5.0.1
+      fast-decode-uri-component: 1.0.1
       fast-querystring: 1.1.2
-      memoirist: 0.1.4
       typescript: 5.2.2
     dev: true
 
@@ -681,10 +711,6 @@ packages:
     engines: {node: 14 || >=16.14}
     dev: true
 
-  /memoirist@0.1.4:
-    resolution: {integrity: sha512-D6GbPSqO2nUVOmm7VZjJc5tC60pkOVUPzLwkKl1vCiYP+2b1cG8N9q1O3P0JmNM68u8vsgefPbxRUCSGxSXD+g==}
-    dev: true
-
   /minimatch@3.1.2:
     resolution: {integrity: sha512-J7p63hRiAjw1NDEww1W7i37+ByIrOWO5XQQAzZ3VOcL0PNybwpfmV/N05zFAzwQ9USyEcX6t3UO+K5aqBQOIHw==}
     dependencies:
@@ -705,6 +731,12 @@ packages:
 
   /ms@2.1.2:
     resolution: {integrity: sha512-sGkPx+VjMtmA6MX27oA4FBFELFCZZ4S4XqeGOXCv68tT+jb3vk/RyaKWP0PTKyWtmLSM0b+adUTEvbs1PEaH2w==}
+    dev: true
+
+  /nanoid@5.0.6:
+    resolution: {integrity: sha512-rRq0eMHoGZxlvaFOUdK1Ev83Bd1IgzzR+WJ3IbDJ7QOSdAxYjlurSPqFs9s4lJg29RT6nPwizFtJhQS6V5xgiA==}
+    engines: {node: ^18 || >=20}
+    hasBin: true
     dev: true
 
   /natural-compare@1.4.0:
@@ -905,6 +937,10 @@ packages:
     resolution: {integrity: sha512-mI4WrpHsbCIcwT9cF4FZvr80QUeKvsUsUvKDoR+X/7XHQH98xYD8YHZg7ANtz2GtZt/CBq2QJ0thkGJMHfqc1w==}
     engines: {node: '>=14.17'}
     hasBin: true
+
+  /undici-types@5.26.5:
+    resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+    dev: true
 
   /uri-js@4.4.1:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
