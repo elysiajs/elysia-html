@@ -71,3 +71,7 @@ app.handle(new Request('http://localhost:8080/'))
 app.handle(new Request('http://localhost:8080/'))
 	.then((x) => x.headers.toJSON())
 	.then(console.log)
+
+	app.handle(new Request('http://localhost:8080/'))
+	.then((x) => x.status)
+	.then(console.log)

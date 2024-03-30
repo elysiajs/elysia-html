@@ -5,8 +5,10 @@ import { isHtml, isTagHtml } from './utils'
 export function handleHtml(
 	value: string | Readable | Promise<string | Readable>,
 	options: HtmlOptions,
-	hasContentType: boolean
+	hasContentType: boolean,
+	status?: number
 ): Promise<Response | string> | Response | string {
+
 	// Only use promises if value is a promise itself
 	if (value instanceof Promise) {
 		return value.then((v) => handleHtml(v, options, hasContentType))
@@ -24,9 +26,7 @@ export function handleHtml(
 
 		return new Response(
 			value,
-			hasContentType
-				? undefined
-				: { headers: { 'content-type': options.contentType! } }
+			initValue(options, hasContentType, status)
 		)
 	}
 
@@ -60,8 +60,13 @@ export function handleHtml(
 
 	return new Response(
 		stream as any,
-		hasContentType
-			? undefined
-			: { headers: { 'content-type': options.contentType! } }
+		initValue(options, hasContentType, status)
 	)
+}
+
+
+function initValue(options: HtmlOptions, hasContentType: boolean, status?: number) {
+	return hasContentType
+		? { status: status?? 200 }
+		: { headers: { 'content-type': options.contentType! }, status: status?? 200 }
 }
