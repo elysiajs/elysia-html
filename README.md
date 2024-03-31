@@ -1,6 +1,6 @@
 # @elysiajs/html
 
-Plugin for [elysia](https://github.com/elysiajs/elysia) that add support for returning html.
+Plugin for [elysia](https://github.com/elysiajs/elysia) that adds support for returning HTML.
 
 <br />
 
