@@ -1,78 +1,97 @@
 {
-  "name": "@elysiajs/html",
-  "version": "1.0.2",
-  "description": "Plugin for Elysia that add support for returning html",
-  "author": {
-    "name": "saltyAom",
-    "url": "https://github.com/SaltyAom",
-    "email": "saltyaom@gmail.com"
-  },
-  "main": "./dist/index.js",
-  "exports": {
-    ".": {
-      "bun": "./dist/index.js",
-      "node": "./dist/cjs/index.js",
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/index.js",
-      "default": "./dist/index.js"
+    "name": "@elysiajs/html",
+    "version": "1.1.0",
+    "description": "Plugin for Elysia that add support for returning html",
+    "author": {
+        "name": "saltyAom",
+        "url": "https://github.com/SaltyAom",
+        "email": "saltyaom@gmail.com"
     },
-    "./htmx": {
-      "bun": "./dist/html.js",
-      "node": "./dist/cjs/htmx.js",
-      "require": "./dist/cjs/htmx.js",
-      "import": "./dist/htmx.js",
-      "default": "./dist/htmx.js"
+    "main": "./dist/cjs/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "exports": {
+        "./package.json": "./package.json",
+        ".": {
+            "types": "./dist/index.d.ts",
+            "import": "./dist/index.mjs",
+            "require": "./dist/cjs/index.js"
+        },
+        "./h": {
+            "types": "./dist/h.d.ts",
+            "import": "./dist/h.mjs",
+            "require": "./dist/cjs/h.js"
+        },
+        "./handler": {
+            "types": "./dist/handler.d.ts",
+            "import": "./dist/handler.mjs",
+            "require": "./dist/cjs/handler.js"
+        },
+        "./hotwire": {
+            "types": "./dist/hotwire.d.ts",
+            "import": "./dist/hotwire.mjs",
+            "require": "./dist/cjs/hotwire.js"
+        },
+        "./html": {
+            "types": "./dist/html.d.ts",
+            "import": "./dist/html.mjs",
+            "require": "./dist/cjs/html.js"
+        },
+        "./htmx": {
+            "types": "./dist/htmx.d.ts",
+            "import": "./dist/htmx.mjs",
+            "require": "./dist/cjs/htmx.js"
+        },
+        "./options": {
+            "types": "./dist/options.d.ts",
+            "import": "./dist/options.mjs",
+            "require": "./dist/cjs/options.js"
+        },
+        "./utils": {
+            "types": "./dist/utils.d.ts",
+            "import": "./dist/utils.mjs",
+            "require": "./dist/cjs/utils.js"
+        }
     },
-    "./hotwire": {
-      "bun": "./dist/hotwire.js",
-      "node": "./dist/cjs/hotwire.js",
-      "require": "./dist/cjs/hotwire.js",
-      "import": "./dist/hotwire.js",
-      "default": "./dist/hotwire.js"
+    "keywords": [
+        "elysia",
+        "html"
+    ],
+    "homepage": "https://github.com/elysiajs/elysia-html",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/elysiajs/elysia-html"
+    },
+    "bugs": "https://github.com/elysiajs/elysia-html/issues",
+    "license": "MIT",
+    "scripts": {
+        "dev": "bun run --watch example/index.tsx",
+        "test": "bun test && npm run test:node",
+        "test:node": "npm install --prefix ./test/node/cjs/ && npm install --prefix ./test/node/esm/ && node ./test/node/cjs/index.js && node ./test/node/esm/index.js",
+        "build": "bun build.ts",
+        "release": "npm run build && npm run test && npm publish --access public",
+        "format": "prettier --write ."
+    },
+    "peerDependencies": {
+        "elysia": ">= 1.1.0"
+    },
+    "devDependencies": {
+        "@types/bun": "1.1.6",
+        "elysia": ">= 1.1.0-rc.2",
+        "eslint": "9.6.0",
+        "tsup": "^8.1.0",
+        "typescript": "^5.5.3"
+    },
+    "dependencies": {
+        "@kitajs/html": "^4.1.0",
+        "@kitajs/ts-html-plugin": "^4.0.1"
+    },
+    "peerDependenciesMeta": {
+        "@kitajs/html": {
+            "optional": true
+        },
+        "@kitajs/ts-html-plugin": {
+            "optional": true
+        }
     }
-  },
-  "types": "./src/index.ts",
-  "keywords": [
-    "elysia",
-    "html"
-  ],
-  "homepage": "https://github.com/elysiajs/elysia-html",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/elysiajs/elysia-html"
-  },
-  "bugs": "https://github.com/elysiajs/elysia-html/issues",
-  "license": "MIT",
-  "scripts": {
-    "dev": "bun run --watch example/index.tsx",
-    "test": "bun test && npm run test:node",
-    "test:node": "npm install --prefix ./test/node/cjs/ && npm install --prefix ./test/node/esm/ && node ./test/node/cjs/index.js && node ./test/node/esm/index.js",
-    "build": "rimraf dist && tsc --project tsconfig.esm.json && tsc --project tsconfig.cjs.json",
-    "release": "npm run build && npm run test && npm publish --access public",
-    "format": "prettier --write ."
-  },
-  "peerDependencies": {
-    "elysia": ">= 1.0.2"
-  },
-  "devDependencies": {
-    "@elysiajs/stream": "^0.7.2",
-    "@types/bun": "^1.0.4",
-    "@types/node": "^20.7.2",
-    "elysia": "1.0.2",
-    "eslint": "^8.50.0",
-    "rimraf": "^5.0.5",
-    "typescript": "^5.2.2"
-  },
-  "dependencies": {
-    "@kitajs/html": "^3.0.2",
-    "@kitajs/ts-html-plugin": "^1.2.0"
-  },
-  "peerDependenciesMeta": {
-    "@kitajs/html": {
-      "optional": true
-    },
-    "@kitajs/ts-html-plugin": {
-      "optional": true
-    }
-  }
 }

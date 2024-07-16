@@ -1,5 +1,5 @@
 import { Elysia, t } from 'elysia'
-import { html } from '../src'
+import html from '../src'
 import { Suspense } from '@kitajs/html/suspense'
 
 function page({ name }: { name: string }): string {

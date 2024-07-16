@@ -16,7 +16,7 @@ export function html(options: HtmlOptions = {}) {
 	const instance = new Elysia({
 		name: '@elysiajs/html',
 		seed: options
-	}).derive({ as: 'global' }, ({ set }) => {
+	}).derive({ as: 'global' }, function htmlPlugin({ set }) {
 		return {
 			html(
 				value: Readable | JSX.Element

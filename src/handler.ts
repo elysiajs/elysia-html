@@ -1,5 +1,5 @@
 import { Readable } from 'stream'
-import { HtmlOptions } from './options'
+import type { HtmlOptions } from './options'
 import { isHtml, isTagHtml } from './utils'
 
 export function handleHtml(
