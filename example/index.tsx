@@ -61,7 +61,11 @@ const indexSchema = {
 const app = new Elysia()
 	// https://elysiajs.com/plugins/html.html#options
 	.use(html())
-	.get('/', () => <h1>Hello World</h1>)
+	.get('/', () => <h1>Hello World</h1>, {
+		afterResponse() {
+			console.log('After response')
+		}
+	})
 	.listen(8080, () => console.log('Listening on http://localhost:8080'))
 
 app.handle(new Request('http://localhost:8080/'))
