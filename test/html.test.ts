@@ -77,4 +77,19 @@ describe('HTML', () => {
 			'text/html; charset=utf8'
 		)
 	})
+
+	it('should keep the original request when the response is not html', async () => {
+		const app = new Elysia()
+			.use(html())
+			.onError(() => {
+				return new Response('ok')
+			})
+			.get('/', () => {
+				throw 'error'
+			})
+
+		let res = await app.handle(request('/'))
+		expect(res.status).toBe(200)
+		expect(await res.text()).toBe('ok')
+	})
 })
