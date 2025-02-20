@@ -61,7 +61,7 @@ export function html(options: HtmlOptions = {}) {
 					return new Response(response)
 				}
 
-				return value
+				return value as Response
 			}
 		)
 

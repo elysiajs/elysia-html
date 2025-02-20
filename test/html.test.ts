@@ -78,15 +78,19 @@ describe('HTML', () => {
 		)
 	})
 
-	it('should keep the original request when the response is not html', async () => {
+	it('keeps the original request when in autoDetect and html is not detected', async () => {
 		const app = new Elysia()
 			.use(html())
-			.onError(() => {
-				return new Response('ok')
+			.onError(({ set} ) => {
+				set.status = 'OK'
+				return 'ok'
 			})
-			.get('/', () => {
-				throw 'error'
-			})
+			.get(
+				'/',
+				() => {
+					throw 'not ok'
+				}
+			)
 
 		let res = await app.handle(request('/'))
 		expect(res.status).toBe(200)
