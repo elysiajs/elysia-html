@@ -107,8 +107,6 @@ describe('HTML vs No html - header', () => {
 		})
 		const res = await app.handle(req('/'))
 		expect(res.headers.get('Server')).toBe('Elysia')
-		expect(res.headers.get('Content-Type')).toBe(
-			'application/json;charset=utf-8'
-		)
+		expect(res.headers.get('Content-Type')).toBe('application/json')
 	})
 })

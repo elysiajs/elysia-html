@@ -40,7 +40,7 @@ describe('options', () => {
 			.get('/html', ({ html }) => html('<div></div>'))
 
 		const res = await app.handle(request('/'))
-		expect(res.headers.get('Content-Type')).toBeNull()
+		expect(res.headers.get('Content-Type')).toBe('text/plain')
 
 		const htmlRes = await app.handle(request('/html'))
 		expect(htmlRes.headers.get('Content-Type')).toBe(
