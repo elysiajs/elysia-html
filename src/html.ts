@@ -38,32 +38,34 @@ export function html(options: HtmlOptions = {}) {
 		}
 	})
 
-	if (options.autoDetect)
-		return instance.mapResponse(
-			{ as: 'global' },
-			async function handlerPossibleHtml({ response: value, set }) {
-				if (
-					// Simple html string
-					isHtml(value) ||
-					// @kitajs/html stream
-					(value instanceof Readable && 'rid' in value)
-				) {
-					const response = await handleHtml(
-						value,
-						options,
-						'content-type' in set.headers
-					)
-
-					if (response instanceof Response) return response
-
-					set.headers['content-type'] = options.contentType!
-
-					return new Response(response)
-				}
-
-				return undefined
-			}
-		)
+	if (!options.autoDetect) return instance
 
 	return instance
+		.mapResponse({ as: 'global' }, async function handlerPossibleHtml({ response: value, set }) {
+			if (!(
+				// Simple html string
+				isHtml(value) ||
+				// @kitajs/html stream
+				(value instanceof Readable && 'rid' in value)
+			))
+				if (value instanceof Response)
+					return value
+				// Hard to check if value is one of the many possible inputs for new Response, so I just went with string for now
+				else if (typeof value === "string")
+					return new Response(value)
+				// On error handle, error message will be sent regardless of response! Not great!
+				else return undefined
+
+			const response = await handleHtml(
+				value,
+				options,
+				'content-type' in set.headers
+			)
+
+			if (response instanceof Response) return response
+
+			set.headers['content-type'] = options.contentType!
+
+			return new Response(response)
+		})
 }
