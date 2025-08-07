@@ -54,12 +54,7 @@ export function html(options: HtmlOptions = {}) {
 				)
 					return
 
-				if (typeof value === 'string')
-					return handleHtml(
-						value,
-						options,
-						'content-type' in set.headers
-					)
+				return handleHtml(value, options, 'content-type' in set.headers)
 			}
 		)
 
