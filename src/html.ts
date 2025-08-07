@@ -8,7 +8,7 @@ import { isHtml } from './utils'
 
 export function html(options: HtmlOptions = {}) {
 	// Defaults
-	options.contentType ??= 'text/html; charset=utf-8'
+	options.contentType ??= 'text/html; charset=utf8'
 	options.autoDetect ??= true
 	options.isHtml ??= isHtml
 	options.autoDoctype ??= true
