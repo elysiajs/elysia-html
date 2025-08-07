@@ -16,7 +16,7 @@ function handler() {
 			<body>
 				<h1>Hello World</h1>
 			</body>
-		</html>		
+		</html>
 		`
 }
 
@@ -76,32 +76,5 @@ describe('HTML', () => {
 		expect(res.headers.get('Content-type')).toContain(
 			'text/html; charset=utf8'
 		)
-	})
-
-	it('returns result of onError callback', async () => {
-		class NotAuthorizedError extends Error {
-			code: string = "NOT_AUTHORIZED"
-			status: number = 401
-			constructor() { super("Not authorized") }
-		}
-
-		const authorized = new Elysia({ name: "authorized" })
-			.derive({ as: "scoped" }, ({ path }) => {
-				if (path.includes("inner")) throw new NotAuthorizedError
-				return { user: 0 }
-			})
-
-		const app = new Elysia()
-			.onError(({ error, redirect }) => {
-				if (error instanceof NotAuthorizedError) return redirect("/")
-				throw error
-			})
-			.get("/", "hello")
-			.use(html())
-			.use(authorized)
-			.get("/inner", ({ }) => ("<h2>not reached</h2>"))
-
-		const res = await app.handle(request("/inner"))
-		expect(res.status + "").toStartWith("3")
 	})
 })

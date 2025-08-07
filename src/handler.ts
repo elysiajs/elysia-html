@@ -6,11 +6,10 @@ export function handleHtml(
 	value: string | Readable | Promise<string | Readable>,
 	options: HtmlOptions,
 	hasContentType: boolean
-): Promise<Response | string> | Response | string {
+): Promise<Response> | Response {
 	// Only use promises if value is a promise itself
-	if (value instanceof Promise) {
+	if (value instanceof Promise)
 		return value.then((v) => handleHtml(v, options, hasContentType))
-	}
 
 	// Simple string use cases
 	if (typeof value === 'string') {
