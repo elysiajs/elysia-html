@@ -20,10 +20,10 @@ function TsxPage({ name }: { name: string }): JSX.Element {
 	return (
 		<html lang="en" style={{ backgroundColor: 'black', color: 'white' }}>
 			<head>
-				<title>Hello {name}!</title>
+				<title safe>Hello {name}!</title>
 			</head>
 			<body>
-				<h1>Hello {name}!</h1>
+				<h1 safe>Hello {name}!</h1>
 			</body>
 		</html>
 	)
@@ -32,14 +32,14 @@ function TsxPage({ name }: { name: string }): JSX.Element {
 async function FakeDatabase({ name }: { name: string }) {
 	// Sleeps 1 second
 	await new Promise((resolve) => setTimeout(resolve, 1000))
-	return <h1>Hello {name}!</h1>
+	return <h1 safe>Hello {name}!</h1>
 }
 
 function AsyncPage({ name, id }: { id: number; name: string }): JSX.Element {
 	return (
 		<html lang="en" style={{ backgroundColor: 'black', color: 'white' }}>
 			<head>
-				<title>Hello {name}!</title>
+				<title safe>Hello {name}!</title>
 			</head>
 			<body>
 				{/* https://github.com/kitajs/html#suspense-component */}
@@ -61,11 +61,7 @@ const indexSchema = {
 const app = new Elysia()
 	// https://elysiajs.com/plugins/html.html#options
 	.use(html())
-	.get('/', () => <h1>Hello World</h1>, {
-		afterResponse() {
-			console.log('After response')
-		}
-	})
+	.get('/', () => <h1>Hello World</h1>)
 	.listen(8080, () => console.log('Listening on http://localhost:8080'))
 
 app.handle(new Request('http://localhost:8080/'))

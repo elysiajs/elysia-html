@@ -4,11 +4,11 @@ import { renderToStream } from '@kitajs/html/suspense'
 
 import { handleHtml } from './handler'
 import { HtmlOptions } from './options'
-import { isHtml, isTagHtml } from './utils'
+import { isHtml } from './utils'
 
 export function html(options: HtmlOptions = {}) {
 	// Defaults
-	options.contentType ??= 'text/html; charset=utf8'
+	options.contentType ??= 'text/html; charset=utf-8'
 	options.autoDetect ??= true
 	options.isHtml ??= isHtml
 	options.autoDoctype ??= true
