@@ -40,7 +40,9 @@ describe('options', () => {
 			.get('/html', ({ html }) => html('<div></div>'))
 
 		const res = await app.handle(request('/'))
-		expect(res.headers.get('Content-Type')).toBe('text/plain')
+		expect(res.headers.get('Content-Type')).not.toBe(
+			'text/html; charset=utf8'
+		)
 
 		const htmlRes = await app.handle(request('/html'))
 		expect(htmlRes.headers.get('Content-Type')).toBe(

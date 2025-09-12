@@ -41,7 +41,7 @@ export function html(options: HtmlOptions = {}) {
 	if (options.autoDetect)
 		instance.mapResponse(
 			{ as: 'global' },
-			function handlerPossibleHtml({ response: value, set }) {
+			function handlerPossibleHtml({ responseValue: value, set }) {
 				if (
 					!(
 						// Simple html string
