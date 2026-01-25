@@ -1,3 +1,6 @@
+# 1.4.1 - 25 Jan 2026
+- export `PropsWithChildren`
+
 # 1.3.1 - 7 Aug 2025
 Bug fix:
 - unintentional overwrite response with autoDetect
