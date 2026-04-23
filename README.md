@@ -1,17 +1,17 @@
-# @elysiajs/html
+# @elysia/html
 
 [Elysia](https://github.com/elysiajs/elysia) plguin to render HTML.
 
 ## Installation
 ```bash
-bun add @elysiajs/html
+bun add @elysia/html
 ```
 
 ## Example
 ```tsx
 import { Elysia } from 'elysia'
 // 'Html' is required for JSX support but not required for string HTML
-import { html, Html } from '@elysiajs/html'
+import { html, Html } from '@elysia/html'
 
 new Elysia()
 	.use(html())
