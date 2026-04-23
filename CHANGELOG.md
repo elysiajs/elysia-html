@@ -1,3 +1,7 @@
+# 1.4.2 - 24 Apr 2026
+Chore:
+- publish under @elysia scope
+
 # 1.4.1 - 25 Jan 2026
 Improvement:
 - export `PropsWithChildren`

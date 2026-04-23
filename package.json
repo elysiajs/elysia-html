@@ -1,7 +1,7 @@
 {
-    "name": "@elysiajs/html",
-    "version": "1.4.1",
-    "description": "Plugin for Elysia that add support for returning html",
+    "name": "@elysia/html",
+    "version": "1.4.2",
+    "description": "Elysia plugin to render HTML",
     "author": {
         "name": "saltyAom",
         "url": "https://github.com/SaltyAom",
