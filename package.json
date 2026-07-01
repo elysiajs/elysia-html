@@ -1,13 +1,13 @@
 {
     "name": "@elysia/html",
-    "version": "1.4.2",
+    "version": "2.0.0-exp.0",
     "description": "Elysia plugin to render HTML",
     "author": {
         "name": "saltyAom",
         "url": "https://github.com/SaltyAom",
         "email": "saltyaom@gmail.com"
     },
-    "main": "./dist/cjs/index.js",
+    "main": "./dist/index.js",
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
     "exports": {
@@ -15,42 +15,42 @@
         ".": {
             "types": "./dist/index.d.ts",
             "import": "./dist/index.mjs",
-            "require": "./dist/cjs/index.js"
+            "require": "./dist/index.js"
         },
         "./h": {
             "types": "./dist/h.d.ts",
             "import": "./dist/h.mjs",
-            "require": "./dist/cjs/h.js"
+            "require": "./dist/h.js"
         },
         "./handler": {
             "types": "./dist/handler.d.ts",
             "import": "./dist/handler.mjs",
-            "require": "./dist/cjs/handler.js"
+            "require": "./dist/handler.js"
         },
         "./hotwire": {
             "types": "./dist/hotwire.d.ts",
             "import": "./dist/hotwire.mjs",
-            "require": "./dist/cjs/hotwire.js"
+            "require": "./dist/hotwire.js"
         },
         "./html": {
             "types": "./dist/html.d.ts",
             "import": "./dist/html.mjs",
-            "require": "./dist/cjs/html.js"
+            "require": "./dist/html.js"
         },
         "./htmx": {
             "types": "./dist/htmx.d.ts",
             "import": "./dist/htmx.mjs",
-            "require": "./dist/cjs/htmx.js"
+            "require": "./dist/htmx.js"
         },
         "./options": {
             "types": "./dist/options.d.ts",
             "import": "./dist/options.mjs",
-            "require": "./dist/cjs/options.js"
+            "require": "./dist/options.js"
         },
         "./utils": {
             "types": "./dist/utils.d.ts",
             "import": "./dist/utils.mjs",
-            "require": "./dist/cjs/utils.js"
+            "require": "./dist/utils.js"
         }
     },
     "keywords": [
@@ -73,18 +73,18 @@
         "format": "prettier --write ."
     },
     "peerDependencies": {
-        "elysia": ">= 1.4.0"
+        "elysia": ">= 2.0.0-exp.23"
     },
     "devDependencies": {
-        "@types/bun": "1.1.14",
-        "elysia": "1.4.0",
+        "@types/bun": "^1.3.14",
+        "elysia": "^2.0.0-exp.23",
         "eslint": "9.6.0",
-        "tsup": "^8.1.0",
-        "typescript": "^5.5.3"
+        "tsdown": "^0.22.3",
+        "typescript": "^6.0.3"
     },
     "dependencies": {
-        "@kitajs/html": "^4.1.0",
-        "@kitajs/ts-html-plugin": "^4.0.1"
+        "@kitajs/html": "^4.2.13",
+        "@kitajs/ts-html-plugin": "^4.1.4"
     },
     "peerDependenciesMeta": {
         "@kitajs/html": {

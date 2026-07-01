@@ -16,7 +16,7 @@ export function html(options: HtmlOptions = {}) {
 	const instance = new Elysia({
 		name: '@elysiajs/html',
 		seed: options
-	}).derive({ as: 'global' }, function htmlPlugin({ set }) {
+	}).derive('plugin', function htmlPlugin({ set }) {
 		return {
 			html(
 				value: Readable | JSX.Element
@@ -40,7 +40,7 @@ export function html(options: HtmlOptions = {}) {
 
 	if (options.autoDetect)
 		instance.mapResponse(
-			{ as: 'global' },
+			'plugin',
 			function handlerPossibleHtml({ responseValue: value, set }) {
 				if (
 					!(
