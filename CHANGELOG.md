@@ -1,3 +1,26 @@
+# 2.0.0 - Unreleased
+Feature:
+- upgrade to Kita Html v5
+- stream `Suspense` boundaries returned from handlers or passed to `html()`
+- add `rid` to the context and `genRequestId` option
+- add `autoSuspense` option for `AutoSuspense`
+- `html()` accepts a render function that reserves Suspense state before an async root resumes
+- send HTML passed to `status()` with the HTML content type
+- release Suspense state on HEAD requests and client disconnects
+
+Bug fix:
+- `stream()` sent the bytes as comma separated numbers
+- custom `isHtml` option was ignored by `autoDetect`
+- Suspense content of async roots was lost when boundaries resolved before the root
+
+Breaking Change:
+- `@kitajs/html@^5` is now a required peer dependency, `@kitajs/ts-html-plugin` is no longer installed
+- remove `Html`, `createElement` and the `@elysia/html/h` entry, use `jsxImportSource: "@kitajs/html"`
+- remove `stream()`, use `html((rid) => ...)`
+- remove `@elysia/html/htmx` and `@elysia/html/hotwire`, use `/// <reference types="@kitajs/html/htmx" />`
+- remove `autoDoctype: 'full'`, `true` already applies to automatically detected responses
+- default content type is now `text/html; charset=utf-8`
+
 # 1.4.2 - 24 Apr 2026
 Chore:
 - publish under @elysia scope

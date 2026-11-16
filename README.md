@@ -1,41 +1,44 @@
 # @elysia/html
 
-[Elysia](https://github.com/elysiajs/elysia) plguin to render HTML.
+[Elysia](https://github.com/elysiajs/elysia) plugin to render HTML and JSX with [Kita Html](https://html.kitajs.org).
 
 ## Installation
 ```bash
-bun add @elysia/html
+bun add @elysia/html @kitajs/html
+bun add -d @kitajs/html-cli typescript
 ```
+
+```jsonc
+// tsconfig.json
+{
+	"compilerOptions": {
+		"jsx": "react-jsx",
+		"jsxImportSource": "@kitajs/html"
+	}
+}
+```
+
+Run `kita-html check` in CI to catch XSS in JSX at compile time.
 
 ## Example
 ```tsx
 import { Elysia } from 'elysia'
-// 'Html' is required for JSX support but not required for string HTML
-import { html, Html } from '@elysia/html'
+import { html } from '@elysia/html'
+import { Suspense } from '@kitajs/html/suspense'
 
 new Elysia()
 	.use(html())
-	.get(
-		'/html',
-		() => `
-            <html lang='en'>
-                <head>
-                    <title>Hello World</title>
-                </head>
-                <body>
-                    <h1>Hello World</h1>
-                </body>
-            </html>`
-	)
-	.get('/jsx', () => (
+	.get('/', () => (
 		<html lang="en">
-			<head>
-				<title>Hello World</title>
-			</head>
 			<body>
 				<h1>Hello World</h1>
 			</body>
 		</html>
+	))
+	.get('/stream', ({ rid }) => (
+		<Suspense rid={rid} fallback={<p>Loading...</p>}>
+			<SlowComponent />
+		</Suspense>
 	))
 	.listen(3000)
 ```

@@ -1,62 +1,101 @@
-import { Elysia } from 'elysia'
-import { Readable } from 'node:stream'
-import { renderToStream } from '@kitajs/html/suspense'
+import { Elysia, ElysiaStatus } from 'elysia'
+import { runWithAutoSuspense, SuspenseRoot } from '@kitajs/html/suspense'
 
-import { handleHtml } from './handler'
-import { HtmlOptions } from './options'
-import { isHtml } from './utils'
+import {
+	renderHtml,
+	renderHtmlFactory,
+	type HtmlHelper,
+	type HtmlRequest,
+	type HtmlRuntime
+} from './handler'
+import type { HtmlOptions } from './options'
+import { defaultRequestId, isHtml } from './utils'
 
 export function html(options: HtmlOptions = {}) {
-	// Defaults
-	options.contentType ??= 'text/html; charset=utf8'
-	options.autoDetect ??= true
-	options.isHtml ??= isHtml
-	options.autoDoctype ??= true
+	const contentType = options.contentType ?? 'text/html; charset=utf-8'
+	const runtime: HtmlRuntime = {
+		contentType,
+		autoDoctype: options.autoDoctype ?? true,
+		init: { headers: { 'content-type': contentType } }
+	}
+	const detect = options.isHtml ?? isHtml
+	const genRequestId = options.genRequestId ?? defaultRequestId
+	const autoSuspense = options.autoSuspense ?? false
+
+	function requestId(request: Request) {
+		const rid = genRequestId(request)
+
+		// renderToStream replaces an empty ID with its own counter, which would
+		// detach the Suspense state from this request.
+		if (rid === '' || rid === undefined || rid === null)
+			throw new TypeError(
+				'`genRequestId` must return a non-empty string or a number.'
+			)
+
+		return rid
+	}
 
 	const instance = new Elysia({
-		name: '@elysiajs/html',
+		name: '@elysia/html',
 		seed: options
-	}).derive('plugin', function htmlPlugin({ set }) {
-		return {
-			html(
-				value: Readable | JSX.Element
-			): Promise<Response | string> | Response | string {
-				return handleHtml(value, options, 'content-type' in set.headers)
-			},
-			stream<A = any>(
-				value: (this: void, arg: A & { id: number }) => JSX.Element,
-				args: A
-			) {
-				return handleHtml(
-					renderToStream((id) =>
-						(value as Function)({ ...args, id })
-					),
-					options,
-					'content-type' in set.headers
-				)
-			}
-		}
 	})
 
-	if (options.autoDetect)
-		instance.mapResponse(
+	if (autoSuspense)
+		// Wraps the whole fetch so hooks, the handler and response mapping share
+		// the same async-local request ID used by AutoSuspense.
+		instance.wrap((fetch) => (request: Request, ...rest: any[]) =>
+			runWithAutoSuspense(requestId(request), () =>
+				fetch(request, ...rest)
+			)
+		)
+
+	const withHtml = instance.derive(
+		'plugin',
+		function htmlPlugin({ request, set }) {
+			const rid = autoSuspense
+				? (SuspenseRoot.requestIdStorage.getStore() ??
+					requestId(request))
+				: requestId(request)
+
+			const req: HtmlRequest = { rid, request, set }
+
+			return {
+				/** The request ID to pass as `rid` to `Suspense` boundaries. */
+				rid,
+				html: function html(value: any) {
+					return typeof value === 'function'
+						? renderHtmlFactory(value, req, runtime)
+						: renderHtml(value, req, runtime)
+				} as HtmlHelper
+			}
+		}
+	)
+
+	if (options.autoDetect ?? true)
+		withHtml.mapResponse(
 			'plugin',
-			function handlerPossibleHtml({ responseValue: value, set }) {
+			function handlePossibleHtml({ responseValue, request, set, rid }) {
+				if (typeof responseValue === 'string') {
+					if (!detect(responseValue)) return
+
+					return renderHtml(responseValue, { rid, request, set }, runtime)
+				}
+
 				if (
-					!(
-						// Simple html string
-						(
-							isHtml(value) ||
-							// @kitajs/html stream
-							(value instanceof Readable && 'rid' in value)
-						)
-					)
+					!(responseValue instanceof ElysiaStatus) ||
+					typeof responseValue.response !== 'string' ||
+					!detect(responseValue.response)
 				)
 					return
 
-				return handleHtml(value, options, 'content-type' in set.headers)
+				return renderHtml(
+					responseValue.response,
+					{ rid, request, set },
+					runtime,
+					responseValue
+				)
 			}
 		)
 
-	return instance
+	return withHtml
 }
