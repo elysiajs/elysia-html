@@ -1,13 +1,9 @@
-import { createElement } from './h'
-
 export * from './html'
 export * from './options'
-export * from './utils'
+export { isHtml, isTagHtml } from './utils'
+export type { HtmlHelper, HtmlRender } from './handler'
 
 export { ErrorBoundary } from '@kitajs/html/error-boundary'
-
-export { Html } from '@kitajs/html'
 export type { PropsWithChildren } from '@kitajs/html'
-export { createElement }
 
 export { html as default } from './html'

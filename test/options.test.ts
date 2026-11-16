@@ -11,7 +11,7 @@ describe('options', () => {
 		const app = new Elysia().use(html()).get('/', () => '<div></div>')
 		const res = await app.handle(request('/'))
 
-		expect(res.headers.get('Content-Type')).toBe('text/html; charset=utf8')
+		expect(res.headers.get('Content-Type')).toBe('text/html; charset=utf-8')
 	})
 
 	it('tests custom contentType', async () => {
@@ -30,7 +30,7 @@ describe('options', () => {
 		const app = new Elysia().use(html()).get('/', () => '<div></div>')
 		const res = await app.handle(request('/'))
 
-		expect(res.headers.get('Content-Type')).toBe('text/html; charset=utf8')
+		expect(res.headers.get('Content-Type')).toBe('text/html; charset=utf-8')
 	})
 
 	it('tests false autoDetect', async () => {
@@ -41,12 +41,12 @@ describe('options', () => {
 
 		const res = await app.handle(request('/'))
 		expect(res.headers.get('Content-Type')).not.toBe(
-			'text/html; charset=utf8'
+			'text/html; charset=utf-8'
 		)
 
 		const htmlRes = await app.handle(request('/html'))
 		expect(htmlRes.headers.get('Content-Type')).toBe(
-			'text/html; charset=utf8'
+			'text/html; charset=utf-8'
 		)
 	})
 
@@ -77,9 +77,9 @@ describe('options', () => {
 		expect(await res.text()).toBe('<not-html></not-html>')
 	})
 
-	it('tests full autoDoctype', async () => {
+	it('tests autoDoctype on automatically detected responses', async () => {
 		const app = new Elysia()
-			.use(html({ autoDoctype: 'full' }))
+			.use(html())
 			.get('/invalid', () => '<not-html></not-html>')
 			.get('/valid', () => '<html></html>')
 
@@ -88,5 +88,29 @@ describe('options', () => {
 
 		const valid = await app.handle(request('/valid'))
 		expect(await valid.text()).toBe('<!doctype html><html></html>')
+	})
+
+	it('uses custom isHtml for automatic detection', async () => {
+		const app = new Elysia()
+			.use(html({ isHtml: (value) => value.startsWith('<x-') }))
+			.get('/div', () => '<div></div>')
+			.get('/custom', () => '<x-card></x-card>')
+
+		const div = await app.handle(request('/div'))
+		expect(div.headers.get('Content-Type') ?? '').not.toContain('text/html')
+
+		const custom = await app.handle(request('/custom'))
+		expect(custom.headers.get('Content-Type')).toBe(
+			'text/html; charset=utf-8'
+		)
+	})
+
+	it('rejects empty request ids', async () => {
+		const app = new Elysia()
+			.use(html({ genRequestId: () => '' }))
+			.get('/', ({ html }) => html('<div></div>'))
+
+		const res = await app.handle(request('/'))
+		expect(res.status).toBe(500)
 	})
 })

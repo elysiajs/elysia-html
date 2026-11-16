@@ -57,7 +57,7 @@ describe('HTML', () => {
 
 		const res = await app.handle(request('/'))
 		expect(res.headers.get('Content-type')).toContain(
-			'text/html; charset=utf8'
+			'text/html; charset=utf-8'
 		)
 	})
 
@@ -66,15 +66,15 @@ describe('HTML', () => {
 
 		let res = await app.handle(request('/'))
 		expect(res.headers.get('Content-type')).toContain(
-			'text/html; charset=utf8'
+			'text/html; charset=utf-8'
 		)
 		res = await app.handle(request('/'))
 		expect(res.headers.get('Content-type')).toContain(
-			'text/html; charset=utf8'
+			'text/html; charset=utf-8'
 		)
 		res = await app.handle(request('/'))
 		expect(res.headers.get('Content-type')).toContain(
-			'text/html; charset=utf8'
+			'text/html; charset=utf-8'
 		)
 	})
 })
